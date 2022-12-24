@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{6BF6BF73-7E1B-42CB-B1D7-A15C1F1A8C76}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>DustAET</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\Build\release\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <OutputPath>..\Build\debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Dust.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework.Game">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Graphics">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="Microsoft.Xna.Framework.Video">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Xact">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Storage">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.GamerServices">
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dust.ai.NPC\Friend.cs" />
+    <Compile Include="Dust.ai.NPC\NPC.cs" />
+    <Compile Include="Dust.ai.NPC\NPCStill.cs" />
+    <Compile Include="Dust.ai.NPC\OneidaBoss.cs" />
+    <Compile Include="Dust.ai\AI.cs" />
+    <Compile Include="Dust.ai\Airship.cs" />
+    <Compile Include="Dust.ai\Assassin.cs" />
+    <Compile Include="Dust.ai\Avee.cs" />
+    <Compile Include="Dust.ai\Blomb.cs" />
+    <Compile Include="Dust.ai\Bunny.cs" />
+    <Compile Include="Dust.ai\Cannon.cs" />
+    <Compile Include="Dust.ai\DarkVillager.cs" />
+    <Compile Include="Dust.ai\Deer.cs" />
+    <Compile Include="Dust.ai\FleshFly.cs" />
+    <Compile Include="Dust.ai\FleshFlyHive.cs" />
+    <Compile Include="Dust.ai\Florn.cs" />
+    <Compile Include="Dust.ai\Frite.cs" />
+    <Compile Include="Dust.ai\Fuse.cs" />
+    <Compile Include="Dust.ai\Gaius.cs" />
+    <Compile Include="Dust.ai\Giant.cs" />
+    <Compile Include="Dust.ai\Imp.cs" />
+    <Compile Include="Dust.ai\JobType.cs" />
+    <Compile Include="Dust.ai\KaneGhost.cs" />
+    <Compile Include="Dust.ai\KaneGhostChase.cs" />
+    <Compile Include="Dust.ai\Kush.cs" />
+    <Compile Include="Dust.ai\LadyBoss.cs" />
+    <Compile Include="Dust.ai\LightBeast.cs" />
+    <Compile Include="Dust.ai\Moonblood.cs" />
+    <Compile Include="Dust.ai\Psylph.cs" />
+    <Compile Include="Dust.ai\Remains.cs" />
+    <Compile Include="Dust.ai\RockHound.cs" />
+    <Compile Include="Dust.ai\Sheep.cs" />
+    <Compile Include="Dust.ai\Slime.cs" />
+    <Compile Include="Dust.ai\Soldier.cs" />
+    <Compile Include="Dust.ai\SquirtBug.cs" />
+    <Compile Include="Dust.ai\StoneCutter.cs" />
+    <Compile Include="Dust.ai\Summoner.cs" />
+    <Compile Include="Dust.ai\Trolk.cs" />
+    <Compile Include="Dust.ai\Wolf.cs" />
+    <Compile Include="Dust.Audio\AmbienceType.cs" />
+    <Compile Include="Dust.Audio\AmbientCue.cs" />
+    <Compile Include="Dust.Audio\FollowCCue.cs" />
+    <Compile Include="Dust.Audio\FollowPCue.cs" />
+    <Compile Include="Dust.Audio\InteractiveCue.cs" />
+    <Compile Include="Dust.Audio\MelodicHit.cs" />
+    <Compile Include="Dust.Audio\Music.cs" />
+    <Compile Include="Dust.Audio\PersistCue.cs" />
+    <Compile Include="Dust.Audio\Sound.cs" />
+    <Compile Include="Dust.Audio\VoiceCue.cs" />
+    <Compile Include="Dust.Audio\VoiceManager.cs" />
+    <Compile Include="Dust.Audio\WeatherAudio.cs" />
+    <Compile Include="Dust.CharClasses\Animation.cs" />
+    <Compile Include="Dust.CharClasses\CanLiftType.cs" />
+    <Compile Include="Dust.CharClasses\Character.cs" />
+    <Compile Include="Dust.CharClasses\CharacterType.cs" />
+    <Compile Include="Dust.CharClasses\CharDef.cs" />
+    <Compile Include="Dust.CharClasses\CharDir.cs" />
+    <Compile Include="Dust.CharClasses\CharExists.cs" />
+    <Compile Include="Dust.CharClasses\CharState.cs" />
+    <Compile Include="Dust.CharClasses\Commands.cs" />
+    <Compile Include="Dust.CharClasses\DamageTypes.cs" />
+    <Compile Include="Dust.CharClasses\DefenseStates.cs" />
+    <Compile Include="Dust.CharClasses\DyingTypes.cs" />
+    <Compile Include="Dust.CharClasses\EtherealState.cs" />
+    <Compile Include="Dust.CharClasses\FlyingType.cs" />
+    <Compile Include="Dust.CharClasses\Frame.cs" />
+    <Compile Include="Dust.CharClasses\KeyFrame.cs" />
+    <Compile Include="Dust.CharClasses\LungeStates.cs" />
+    <Compile Include="Dust.CharClasses\NPCType.cs" />
+    <Compile Include="Dust.CharClasses\Part.cs" />
+    <Compile Include="Dust.CharClasses\PartsSnapshot.cs" />
+    <Compile Include="Dust.CharClasses\PatrollingType.cs" />
+    <Compile Include="Dust.CharClasses\PressedKeys.cs" />
+    <Compile Include="Dust.CharClasses\QueuedKey.cs" />
+    <Compile Include="Dust.CharClasses\Script.cs" />
+    <Compile Include="Dust.CharClasses\ScriptLine.cs" />
+    <Compile Include="Dust.CharClasses\SpawnTypes.cs" />
+    <Compile Include="Dust.CharClasses\StatusEffects.cs" />
+    <Compile Include="Dust.CharClasses\Team.cs" />
+    <Compile Include="Dust.CharClasses\Trigger.cs" />
+    <Compile Include="Dust.Dialogue\CreditScroll.cs" />
+    <Compile Include="Dust.Dialogue\Cutscene.cs" />
+    <Compile Include="Dust.Dialogue\CutsceneType.cs" />
+    <Compile Include="Dust.Dialogue\ResponseLocal.cs" />
+    <Compile Include="Dust.Dialogue\ResponseMaster.cs" />
+    <Compile Include="Dust.HUD\ChallengeManager.cs" />
+    <Compile Include="Dust.HUD\Chapter.cs" />
+    <Compile Include="Dust.HUD\Dialogue.cs" />
+    <Compile Include="Dust.HUD\DialogueScript.cs" />
+    <Compile Include="Dust.HUD\DialogueState.cs" />
+    <Compile Include="Dust.HUD\EquipItem.cs" />
+    <Compile Include="Dust.HUD\EquipType.cs" />
+    <Compile Include="Dust.HUD\FidgetPrompt.cs" />
+    <Compile Include="Dust.HUD\FileManage.cs" />
+    <Compile Include="Dust.HUD\HUD.cs" />
+    <Compile Include="Dust.HUD\InventoryManager.cs" />
+    <Compile Include="Dust.HUD\InventoryState.cs" />
+    <Compile Include="Dust.HUD\LoadState.cs" />
+    <Compile Include="Dust.HUD\Material.cs" />
+    <Compile Include="Dust.HUD\MaterialType.cs" />
+    <Compile Include="Dust.HUD\Menu.cs" />
+    <Compile Include="Dust.HUD\MenuMode.cs" />
+    <Compile Include="Dust.HUD\MiniPrompt.cs" />
+    <Compile Include="Dust.HUD\MiniPromptType.cs" />
+    <Compile Include="Dust.HUD\promptDialogue.cs" />
+    <Compile Include="Dust.HUD\PurchaseMode.cs" />
+    <Compile Include="Dust.HUD\QuestPage.cs" />
+    <Compile Include="Dust.HUD\ScoreDraw.cs" />
+    <Compile Include="Dust.HUD\Shop.cs" />
+    <Compile Include="Dust.HUD\ShopListType.cs" />
+    <Compile Include="Dust.HUD\ShopType.cs" />
+    <Compile Include="Dust.HUD\TextBox.cs" />
+    <Compile Include="Dust.HUD\TextBoxType.cs" />
+    <Compile Include="Dust.HUD\UnlockGame.cs" />
+    <Compile Include="Dust.HUD\UpsellManager.cs" />
+    <Compile Include="Dust.MapClasses.bucket\Bucket.cs" />
+    <Compile Include="Dust.MapClasses.bucket\BucketItem.cs" />
+    <Compile Include="Dust.MapClasses.bucket\Party.cs" />
+    <Compile Include="Dust.MapClasses.script\DoorRegion.cs" />
+    <Compile Include="Dust.MapClasses.script\EventRegion.cs" />
+    <Compile Include="Dust.MapClasses.script\MapScriptLine.cs" />
+    <Compile Include="Dust.MapClasses.script\WarpRegion.cs" />
+    <Compile Include="Dust.MapClasses\BombRegion.cs" />
+    <Compile Include="Dust.MapClasses\BoostRegion.cs" />
+    <Compile Include="Dust.MapClasses\BrightRegion.cs" />
+    <Compile Include="Dust.MapClasses\ColType.cs" />
+    <Compile Include="Dust.MapClasses\DarkRegion.cs" />
+    <Compile Include="Dust.MapClasses\DestructableManager.cs" />
+    <Compile Include="Dust.MapClasses\DestructLamp.cs" />
+    <Compile Include="Dust.MapClasses\DestructPlatform.cs" />
+    <Compile Include="Dust.MapClasses\DestructWall.cs" />
+    <Compile Include="Dust.MapClasses\Gate.cs" />
+    <Compile Include="Dust.MapClasses\HazardSpeed.cs" />
+    <Compile Include="Dust.MapClasses\IdRectRegion.cs" />
+    <Compile Include="Dust.MapClasses\Layer.cs" />
+    <Compile Include="Dust.MapClasses\Ledge.cs" />
+    <Compile Include="Dust.MapClasses\LedgeFlags.cs" />
+    <Compile Include="Dust.MapClasses\Map.cs" />
+    <Compile Include="Dust.MapClasses\MapCommands.cs" />
+    <Compile Include="Dust.MapClasses\MapFlags.cs" />
+    <Compile Include="Dust.MapClasses\MapScript.cs" />
+    <Compile Include="Dust.MapClasses\MapSegment.cs" />
+    <Compile Include="Dust.MapClasses\MovingPlatform.cs" />
+    <Compile Include="Dust.MapClasses\RandomType.cs" />
+    <Compile Include="Dust.MapClasses\RenderState.cs" />
+    <Compile Include="Dust.MapClasses\ReverbRegion.cs" />
+    <Compile Include="Dust.MapClasses\RopeElement.cs" />
+    <Compile Include="Dust.MapClasses\SegmentDefinition.cs" />
+    <Compile Include="Dust.MapClasses\TerrainType.cs" />
+    <Compile Include="Dust.MapClasses\TransitionDirection.cs" />
+    <Compile Include="Dust.MapClasses\WeatherAudioType.cs" />
+    <Compile Include="Dust.MapClasses\WeatherManager.cs" />
+    <Compile Include="Dust.MapClasses\WeatherType.cs" />
+    <Compile Include="Dust.NavClasses\Cell.cs" />
+    <Compile Include="Dust.NavClasses\NavManager.cs" />
+    <Compile Include="Dust.NavClasses\NavScript.cs" />
+    <Compile Include="Dust.NavClasses\NavScriptLine.cs" />
+    <Compile Include="Dust.NavClasses\RevealMap.cs" />
+    <Compile Include="Dust.NavClasses\TreasureScript.cs" />
+    <Compile Include="Dust.NavClasses\WorldMap.cs" />
+    <Compile Include="Dust.Particles\Avalanche.cs" />
+    <Compile Include="Dust.Particles\Blood.cs" />
+    <Compile Include="Dust.Particles\Bomb.cs" />
+    <Compile Include="Dust.Particles\BounceSpark.cs" />
+    <Compile Include="Dust.Particles\BrickWall.cs" />
+    <Compile Include="Dust.Particles\Bubble.cs" />
+    <Compile Include="Dust.Particles\BubbleDrip.cs" />
+    <Compile Include="Dust.Particles\BubbleSquirt.cs" />
+    <Compile Include="Dust.Particles\Butterfly.cs" />
+    <Compile Include="Dust.Particles\Cage.cs" />
+    <Compile Include="Dust.Particles\CannonFireBall.cs" />
+    <Compile Include="Dust.Particles\CannonShell.cs" />
+    <Compile Include="Dust.Particles\Caption.cs" />
+    <Compile Include="Dust.Particles\CaveLeaf.cs" />
+    <Compile Include="Dust.Particles\ChainLink.cs" />
+    <Compile Include="Dust.Particles\CheckPoint.cs" />
+    <Compile Include="Dust.Particles\Chest.cs" />
+    <Compile Include="Dust.Particles\Coin.cs" />
+    <Compile Include="Dust.Particles\ComboBreak.cs" />
+    <Compile Include="Dust.Particles\CoraProjectile.cs" />
+    <Compile Include="Dust.Particles\DeathFlame.cs" />
+    <Compile Include="Dust.Particles\DustHat.cs" />
+    <Compile Include="Dust.Particles\DustSword.cs" />
+    <Compile Include="Dust.Particles\DustSwordFall.cs" />
+    <Compile Include="Dust.Particles\ElectricBolt.cs" />
+    <Compile Include="Dust.Particles\EmitFlame.cs" />
+    <Compile Include="Dust.Particles\EmitLava.cs" />
+    <Compile Include="Dust.Particles\EmitRocks.cs" />
+    <Compile Include="Dust.Particles\Equipment.cs" />
+    <Compile Include="Dust.Particles\Exists.cs" />
+    <Compile Include="Dust.Particles\Explosion.cs" />
+    <Compile Include="Dust.Particles\Feather.cs" />
+    <Compile Include="Dust.Particles\Fidget.cs" />
+    <Compile Include="Dust.Particles\FidgetBolt.cs" />
+    <Compile Include="Dust.Particles\FidgetPillar.cs" />
+    <Compile Include="Dust.Particles\FidgetPuff.cs" />
+    <Compile Include="Dust.Particles\FidgetTriple.cs" />
+    <Compile Include="Dust.Particles\Fish.cs" />
+    <Compile Include="Dust.Particles\FlamePuff.cs" />
+    <Compile Include="Dust.Particles\FlameSpark.cs" />
+    <Compile Include="Dust.Particles\FlornProj.cs" />
+    <Compile Include="Dust.Particles\FlySwarm.cs" />
+    <Compile Include="Dust.Particles\Fog.cs" />
+    <Compile Include="Dust.Particles\FootStep.cs" />
+    <Compile Include="Dust.Particles\FootStepSnow.cs" />
+    <Compile Include="Dust.Particles\FootStepWater.cs" />
+    <Compile Include="Dust.Particles\FuseFireBall.cs" />
+    <Compile Include="Dust.Particles\FusePillar.cs" />
+    <Compile Include="Dust.Particles\FuseSeekBall.cs" />
+    <Compile Include="Dust.Particles\GaiusSphere.cs" />
+    <Compile Include="Dust.Particles\Ghostly.cs" />
+    <Compile Include="Dust.Particles\GlowSpark.cs" />
+    <Compile Include="Dust.Particles\GraveLeaf.cs" />
+    <Compile Include="Dust.Particles\GroundDust.cs" />
+    <Compile Include="Dust.Particles\HeatWave.cs" />
+    <Compile Include="Dust.Particles\Hit.cs" />
+    <Compile Include="Dust.Particles\HitSpark.cs" />
+    <Compile Include="Dust.Particles\HP.cs" />
+    <Compile Include="Dust.Particles\HudCoin.cs" />
+    <Compile Include="Dust.Particles\HudDust.cs" />
+    <Compile Include="Dust.Particles\HudFire.cs" />
+    <Compile Include="Dust.Particles\HudLightning.cs" />
+    <Compile Include="Dust.Particles\HudRain.cs" />
+    <Compile Include="Dust.Particles\HudSmoke.cs" />
+    <Compile Include="Dust.Particles\HudSpark.cs" />
+    <Compile Include="Dust.Particles\Icicle.cs" />
+    <Compile Include="Dust.Particles\Key.cs" />
+    <Compile Include="Dust.Particles\LadySphere.cs" />
+    <Compile Include="Dust.Particles\LampDebris.cs" />
+    <Compile Include="Dust.Particles\LavaDrip.cs" />
+    <Compile Include="Dust.Particles\LavaSpray.cs" />
+    <Compile Include="Dust.Particles\Leaf.cs" />
+    <Compile Include="Dust.Particles\LensFlare.cs" />
+    <Compile Include="Dust.Particles\Lightning.cs" />
+    <Compile Include="Dust.Particles\Material.cs" />
+    <Compile Include="Dust.Particles\MenuDebris.cs" />
+    <Compile Include="Dust.Particles\MenuLeaf.cs" />
+    <Compile Include="Dust.Particles\MenuPuff.cs" />
+    <Compile Include="Dust.Particles\Note.cs" />
+    <Compile Include="Dust.Particles\Particle.cs" />
+    <Compile Include="Dust.Particles\ParticleManager.cs" />
+    <Compile Include="Dust.Particles\PlayerDebris.cs" />
+    <Compile Include="Dust.Particles\Pollen.cs" />
+    <Compile Include="Dust.Particles\PollenCave.cs" />
+    <Compile Include="Dust.Particles\PondRipple.cs" />
+    <Compile Include="Dust.Particles\Puff.cs" />
+    <Compile Include="Dust.Particles\Rain.cs" />
+    <Compile Include="Dust.Particles\RaveBeam.cs" />
+    <Compile Include="Dust.Particles\RenderState.cs" />
+    <Compile Include="Dust.Particles\Score.cs" />
+    <Compile Include="Dust.Particles\ShockRing.cs" />
+    <Compile Include="Dust.Particles\Slash.cs" />
+    <Compile Include="Dust.Particles\Smoke.cs" />
+    <Compile Include="Dust.Particles\Snow.cs" />
+    <Compile Include="Dust.Particles\SnowTime.cs" />
+    <Compile Include="Dust.Particles\Sparkle1.cs" />
+    <Compile Include="Dust.Particles\SpawnBeam.cs" />
+    <Compile Include="Dust.Particles\SpinBlade.cs" />
+    <Compile Include="Dust.Particles\Spray.cs" />
+    <Compile Include="Dust.Particles\SquirtFlame.cs" />
+    <Compile Include="Dust.Particles\Starburst.cs" />
+    <Compile Include="Dust.Particles\Stone.cs" />
+    <Compile Include="Dust.Particles\Upgrade.cs" />
+    <Compile Include="Dust.Particles\UpgradeBurn.cs" />
+    <Compile Include="Dust.Particles\VerticleBeam.cs" />
+    <Compile Include="Dust.Particles\VolcanicAsh.cs" />
+    <Compile Include="Dust.Particles\WaterDrip.cs" />
+    <Compile Include="Dust.Particles\WaterFall.cs" />
+    <Compile Include="Dust.Particles\WaterSplash.cs" />
+    <Compile Include="Dust.Particles\Whirlwind.cs" />
+    <Compile Include="Dust.Particles\XP.cs" />
+    <Compile Include="Dust.PCClasses\AlternateKeyboardLayouts.cs" />
+    <Compile Include="Dust.PCClasses\InputDevice.cs" />
+    <Compile Include="Dust.PCClasses\InputKey.cs" />
+    <Compile Include="Dust.PCClasses\MouseButton.cs" />
+    <Compile Include="Dust.PCClasses\PCManager.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_000_Main.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_001_ImpHides.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_002_BeastSpears.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_003_Slime.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_004_BlackSmith.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_005_RestockShop.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_006_Laundry.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_007_HighCombo.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_008_Reunion.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_009_ReedMemory.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_010_Autograph.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_011_LostFlock.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_012_RedMoss.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_013_BlopStick.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_014_Trolks.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_015_Doll.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_016_Dentures.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_017_GiantArmor.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_018_AveeClaws.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_019_FlornSparks.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_020_PocketWatch.cs" />
+    <Compile Include="Dust.Quests.SideQuests\_021_BopoSnow.cs" />
+    <Compile Include="Dust.Quests\Notes.cs" />
+    <Compile Include="Dust.Quests\Quest.cs" />
+    <Compile Include="Dust.Quests\QuestManager.cs" />
+    <Compile Include="Dust.Storage\ChallengeArena.cs" />
+    <Compile Include="Dust.Storage\SaveGame.cs" />
+    <Compile Include="Dust.Storage\SaveItem.cs" />
+    <Compile Include="Dust.Storage\Settings.cs" />
+    <Compile Include="Dust.Storage\Store.cs" />
+    <Compile Include="Dust.Storage\StoreResult.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Avgustin.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Bean.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Blop.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Bopo.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Bram.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Calum.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Colleen.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Cora.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Corbin.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Cutscenes.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Elder.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Events.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Fale.cs" />
+    <Compile Include="Dust.Strings\Dialogue_FloHop.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Geehan.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Gianni.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Ginger.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Haley.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Kane.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Lady.cs" />
+    <Compile Include="Dust.Strings\Dialogue_MaMop.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Matti.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Moska.cs" />
+    <Compile Include="Dust.Strings\Dialogue_OldGappy.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Oneida.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Reed.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Sanjin.cs" />
+    <Compile Include="Dust.Strings\Dialogue_Sarahi.cs" />
+    <Compile Include="Dust.Strings\Dialogue_ShopAurora.cs" />
+    <Compile Include="Dust.Strings\Dialogue_ShopWild.cs" />
+    <Compile Include="Dust.Strings\Dialogue_SmoBop.cs" />
+    <Compile Include="Dust.Strings\Strings_Achievements.cs" />
+    <Compile Include="Dust.Strings\Strings_Chapters.cs" />
+    <Compile Include="Dust.Strings\Strings_Credits.cs" />
+    <Compile Include="Dust.Strings\Strings_EquipDetails.cs" />
+    <Compile Include="Dust.Strings\Strings_Equipment.cs" />
+    <Compile Include="Dust.Strings\Strings_FriendlyNames.cs" />
+    <Compile Include="Dust.Strings\Strings_Help.cs" />
+    <Compile Include="Dust.Strings\Strings_Hud.cs" />
+    <Compile Include="Dust.Strings\Strings_HudInv.cs" />
+    <Compile Include="Dust.Strings\Strings_Leaderboards.cs" />
+    <Compile Include="Dust.Strings\Strings_MainMenu.cs" />
+    <Compile Include="Dust.Strings\Strings_Manual.cs" />
+    <Compile Include="Dust.Strings\Strings_ManualGraphics.cs" />
+    <Compile Include="Dust.Strings\Strings_Materials.cs" />
+    <Compile Include="Dust.Strings\Strings_Notes.cs" />
+    <Compile Include="Dust.Strings\Strings_Options.cs" />
+    <Compile Include="Dust.Strings\Strings_PauseMenu.cs" />
+    <Compile Include="Dust.Strings\Strings_PC.cs" />
+    <Compile Include="Dust.Strings\Strings_Prompts.cs" />
+    <Compile Include="Dust.Strings\Strings_Quests.cs" />
+    <Compile Include="Dust.Strings\Strings_Regions.cs" />
+    <Compile Include="Dust.Strings\Strings_Shop.cs" />
+    <Compile Include="Dust.Vibration\Blast.cs" />
+    <Compile Include="Dust.Vibration\Rumble.cs" />
+    <Compile Include="Dust.Vibration\ScreenShake.cs" />
+    <Compile Include="Dust.Vibration\VibrationManager.cs" />
+    <Compile Include="Dust\Achievement.cs" />
+    <Compile Include="Dust\AwardsManager.cs" />
+    <Compile Include="Dust\BreakInfo.cs" />
+    <Compile Include="Dust\Camera.cs" />
+    <Compile Include="Dust\CamState.cs" />
+    <Compile Include="Dust\EventManager.cs" />
+    <Compile Include="Dust\EventType.cs" />
+    <Compile Include="Dust\FidgetState.cs" />
+    <Compile Include="Dust\Game1.cs" />
+    <Compile Include="Dust\GetText.cs" />
+    <Compile Include="Dust\GlobalFunctions.cs" />
+    <Compile Include="Dust\HitManager.cs" />
+    <Compile Include="Dust\LeaderBoardFilter.cs" />
+    <Compile Include="Dust\LeaderBoardView.cs" />
+    <Compile Include="Dust\LogicalGamer.cs" />
+    <Compile Include="Dust\LogicalGamerIndex.cs" />
+    <Compile Include="Dust\NoHangulWrap.cs" />
+    <Compile Include="Dust\Program.cs" />
+    <Compile Include="Dust\Prohibition.cs" />
+    <Compile Include="Dust\Rand.cs" />
+    <Compile Include="Dust\SkipType.cs" />
+    <Compile Include="Dust\Stats.cs" />
+    <Compile Include="Dust\Text.cs" />
+    <Compile Include="Dust\TextAlign.cs" />
+    <Compile Include="Dust\WordWrap.cs" />
+    <Compile Include="Lotus.Threading\ManagedThread.cs" />
+    <Compile Include="Lotus.Threading\TaskFinishedDelegate.cs" />
+    <Compile Include="Lotus.Threading\ThreadTask.cs" />
+    <Compile Include="Lotus.Threading\ThreadTaskDelegate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Avgustin.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Bean.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Blop.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Bopo.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Bram.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Calum.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Colleen.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Cora.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Corbin.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Cutscenes.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Elder.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Events.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Fale.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_FloHop.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Geehan.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Gianni.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Ginger.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Haley.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Kane.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Lady.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_MaMop.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Matti.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Moska.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_OldGappy.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Oneida.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Reed.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Sanjin.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_Sarahi.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_ShopAurora.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_ShopWild.resx" />
+    <EmbeddedResource Include="Dust.Strings\Dialogue_SmoBop.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Achievements.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Chapters.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Credits.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_EquipDetails.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Equipment.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_FriendlyNames.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Help.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Hud.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_HudInv.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Leaderboards.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_MainMenu.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Manual.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_ManualGraphics.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Materials.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Notes.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Options.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_PauseMenu.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_PC.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Prompts.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dust.Strings\Strings_Quests.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Regions.resx" />
+    <EmbeddedResource Include="Dust.Strings\Strings_Shop.resx" />
+    <EmbeddedResource Include="Microsoft.Xna.Framework.RuntimeProfile" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="de\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="es\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fr\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="it\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ja\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

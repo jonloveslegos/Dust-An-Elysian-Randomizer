@@ -1,0 +1,8 @@
+1. Use xdeltaUI to patch the DustAET.exe file in the original game's directory. (Patch is the .xdelta file, Source File is the original DustAET.exe, Output File is where you want to put the new one, must have all the files of the original game inside of that folder except for having the patched exe instead of the original one.)
+2. Copy the contents of the COPY folder into the modded game's directory.
+3. Play the randomizer with a new save file.
+
+Notes:
+* When you create a new save with this mod, it will re-randomize, causing previous saves to no longer work.
+* Shops are not randomized.
+* Equipment is not progressive yet.
