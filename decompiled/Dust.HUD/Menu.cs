@@ -5004,7 +5004,7 @@ namespace Dust.HUD
 			foreach (string line in System.IO.File.ReadLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\items.data"))
 			{
 				var found = "";
-				if (line[0] != '[')
+				if (line[0] != '[' && line[0] != '{')
 				{
 					foreach (char chara in line)
 					{
@@ -5038,7 +5038,7 @@ namespace Dust.HUD
 			foreach (string line in System.IO.File.ReadLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\items.data"))
 			{
 				var found = "";
-				if (line[0] != '[')
+				if (line[0] != '[' && line[0] != '{')
 				{
 					foreach (char chara in line)
 					{
@@ -5072,7 +5072,7 @@ namespace Dust.HUD
 			foreach (string line in System.IO.File.ReadLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\items.data"))
 			{
 				var found = 0;
-				if (line[0] != '[')
+				if (line[0] != '[' && line[0] != '{')
 				{
 					foreach (char chara in line)
 					{
@@ -5118,13 +5118,70 @@ namespace Dust.HUD
 			}
 			return itemid;
 		}
+
+		public List<string> GetAreaLogicFromFile()
+		{
+			var itemid = new List<string>();
+			foreach (string line in System.IO.File.ReadLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\items.data"))
+			{
+				var found = "";
+				if (line[0] == '{')
+				{
+					foreach (char chara in line)
+					{
+						if (chara.ToString() == "[")
+						{
+							found = "";
+							found += "[";
+						}
+						else if (chara.ToString() == "]")
+						{
+							found += "_";
+							break;
+						}
+						else
+						{
+							found += chara;
+						}
+					}
+					itemid.Add(found);
+				}
+			}
+			return itemid;
+		}
+
+		public List<string> GetAreaNamesFromFile()
+		{
+			var itemid = new List<string>();
+			foreach (string line in System.IO.File.ReadLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\items.data"))
+			{
+				var found = "";
+				if (line[0] == '{')
+				{
+					foreach (char chara in line)
+					{
+						if (chara.ToString() == ":")
+						{
+							found = "";
+						}
+						else
+						{
+							found += chara;
+						}
+					}
+					itemid.Add(found);
+				}
+			}
+			return itemid;
+		}
+
 		public List<string> GetLocationLogicsFromFile()
 		{
 			var itemid = new List<string>();
 			foreach (string line in System.IO.File.ReadLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\items.data"))
 			{
 				var found = "";
-				if (line[0] != '[')
+				if (line[0] != '[' && line[0] != '{')
 				{
 					foreach (char chara in line)
 					{
@@ -5169,7 +5226,7 @@ namespace Dust.HUD
 			{
 				return true;
 			}
-			else if (toParse[0].ToString() != "[")
+			else if (line[0] != '[' && line[0] != '{')
             {
 				return true;
             }
@@ -5273,6 +5330,18 @@ namespace Dust.HUD
 			spotcounts.AddRange(GetLocationItemsFromFile());
 			List<string> spotslogic = new List<string>();
 			spotslogic.AddRange(GetLocationLogicsFromFile());
+			List<string> areaLogic = new List<string>();
+			areaLogic.AddRange(GetAreaLogicFromFile());
+			List<string> areaNames = new List<string>();
+			areaLogic.AddRange(GetAreaNamesFromFile());
+			for (var i = 0; i < spotslogic.Count; i++)
+			{
+				foreach (var item in areaNames)
+				{
+					spotslogic[i] = spotslogic[i].Replace(item+"&","("+areaLogic[areaNames.IndexOf(item)]+")&");
+					spotslogic[i] = spotslogic[i].Replace(item+"_","("+areaLogic[areaNames.IndexOf(item)]+")_");
+				}
+			}
 			var indexcur = Rand.GetRandomInt(0, spots.Count);
 			var startcur = indexcur;
 			var filetowrite = System.IO.File.CreateText(System.IO.Directory.GetCurrentDirectory() + "\\data\\seed.data");
@@ -5408,6 +5477,8 @@ namespace Dust.HUD
 			{
 				didit = this.MakeSeed();
 			}
+			Game1.stats.GetChestFromFile("Starting Ability 1", pMan);
+			Game1.stats.GetChestFromFile("Starting Ability 2", pMan);
 			WeatherAudio.Play(WeatherAudioType.Silent);
 			Game1.stats.ResetGame(pMan, this.character);
 			Game1.stats.gameDifficulty = (Game1.stats.startDifficulty = (byte)difficulty);

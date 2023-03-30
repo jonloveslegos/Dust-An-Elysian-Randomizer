@@ -2,8 +2,10 @@ Build
 .vs
 Dust Rando.zip
 decompiled/content
+decompiled/obj
 decompiled/data/chars
 decompiled/data/dialogue
 decompiled/data/mapdefs
 decompiled/data/maps
 decompiled/data/navs
+*.cache

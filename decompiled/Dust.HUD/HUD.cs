@@ -1321,6 +1321,9 @@ namespace Dust.HUD
 							case 2:
 								text = "FIDGET PROJECTILE";
 								break;
+							case 3:
+								text = "FIDGET PROJECTILE";
+								break;
 							case 10:
 								text = "DASH";
 								break;
@@ -2601,10 +2604,18 @@ namespace Dust.HUD
 						{
 							num -= 10;
 						}
-						if (Game1.stats.upgrade[num] > 0 || num == 0)
+						if (num != 3 && num != 4 && num != 5)
 						{
-							Game1.stats.projectileType = num;
-							break;
+							if (Game1.stats.upgrade[3] > 0 && num == 0)
+							{
+								Game1.stats.projectileType = num;
+								break;
+							}
+							if (Game1.stats.upgrade[num] > 0 && num != 0)
+							{
+								Game1.stats.projectileType = num;
+								break;
+							}
 						}
 					}
 					if (projectileType != Game1.stats.projectileType)

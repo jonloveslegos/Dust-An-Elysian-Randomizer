@@ -163,7 +163,7 @@ namespace Dust.Particles
 				}
 			}
 			this.rotation = MathHelper.Clamp(base.trajectory.X / 12000f, -0.75f, 0.75f);
-			if (c[0].KeyThrow && Game1.stats.canThrow && Game1.stats.playerLifeState == 0 && c[0].StatusEffect != StatusEffects.Silent)
+			if (c[0].KeyThrow && Game1.stats.canThrow && Game1.stats.playerLifeState == 0 && c[0].StatusEffect != StatusEffects.Silent && ((Game1.stats.upgrade[num] > 0 && Game1.stats.projectileType != 0 && Game1.stats.projectileType != 3) || (Game1.stats.upgrade[3] > 0 && Game1.stats.projectileType == 0)))
 			{
 				Game1.stats.curCharge -= Game1.stats.projectileCost;
 				this.InitThrowAnim(c, pMan, throwProjectile: true);
