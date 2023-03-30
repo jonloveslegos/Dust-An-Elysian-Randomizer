@@ -1793,7 +1793,7 @@ namespace Dust.CharClasses
 		{
 			if (this.Definition.charType == CharacterType.Dust && this.State == CharState.Air)
 			{
-				if (this.KeyDown && (this.ID != 0 || Game1.stats.upgrade[0] > 0))
+				if (this.KeyDown)
 				{
 					this.SetAnim("attackairdown", 0, 2);
 				}
@@ -3504,9 +3504,9 @@ namespace Dust.CharClasses
 						this.SetAnim("crouch", 0, 2);
 						this.Trajectory.X = 0f;
 					}
-					if (this.KeyJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0))
+					if (this.KeyJump)
 					{
-						if (!this.KeyDown && this.canJump)
+						if (!this.KeyDown && this.canJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0))
 						{
 							this.SetJump(this.JumpVelocity, jumped: true);
 						}
@@ -3565,9 +3565,9 @@ namespace Dust.CharClasses
 						this.SetAnim("crouch", 0, 2);
 						this.Trajectory.X = 0f;
 					}
-					if (this.KeyJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0))
+					if (this.KeyJump)
 					{
-						if (!this.KeyDown && this.canJump)
+						if (!this.KeyDown && this.canJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0))
 						{
 							this.SetJump(this.JumpVelocity, jumped: true);
 						}
@@ -3612,7 +3612,7 @@ namespace Dust.CharClasses
 								HitManager.CheckWallHazard(Game1.character, this.ID, Game1.pManager, 100, (ColType)num);
 							}
 						}
-						if (this.KeyJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0))
+						if (this.KeyJump)
 						{
 							if (this.CanFallThrough)
 							{
@@ -3697,7 +3697,7 @@ namespace Dust.CharClasses
 					{
 						return;
 					}
-					if (this.KeyJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0) && this.canJump && this.ID == 0)
+					if (this.KeyJump && this.canJump && this.ID == 0)
 					{
 						if (this.Boosting == 0 && Game1.stats.upgrade[17] > 0 && this.AnimName != "jumpboost")
 						{
@@ -3792,7 +3792,7 @@ namespace Dust.CharClasses
 					{
 						this.SetAnim("throw", 0, 2);
 					}
-					if (this.KeyJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0) && this.canJump && this.ID == 0)
+					if (this.KeyJump && this.canJump && this.ID == 0)
 					{
 						if (this.Boosting == 0 && Game1.stats.upgrade[17] > 0)
 						{
@@ -3805,14 +3805,14 @@ namespace Dust.CharClasses
 							Game1.stats.doubleJump++;
 						}
 					}
-					if (this.KeyDown && this.KeySecondary && (this.ID != 0 || Game1.stats.upgrade[0] > 0))
+					if (this.KeyDown && this.KeySecondary)
 					{
 						this.SetAnim("attackairdown", 0, 0);
 					}
 				}
 				else if (this.AnimName == "airspin")
 				{
-					if (this.AnimFrame < 9 && this.KeySecondary && (this.ID != 0 || Game1.stats.upgrade[0] > 0))
+					if (this.AnimFrame < 9 && this.KeySecondary)
 					{
 						bool flag = false;
 						CharDir face2 = this.Face;
@@ -3851,7 +3851,7 @@ namespace Dust.CharClasses
 							this.Slide(1200f);
 						}
 					}
-					if (this.KeyDown && this.KeySecondary && (this.ID != 0 || Game1.stats.upgrade[0] > 0))
+					if (this.KeyDown && this.KeySecondary)
 					{
 						this.SetAnim("attackairdown", 0, 0);
 					}
@@ -3892,9 +3892,9 @@ namespace Dust.CharClasses
 						this.SetAnim("crouch", 0, 2);
 						this.Trajectory.X = 0f;
 					}
-					if (this.KeyJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0))
+					if (this.KeyJump)
 					{
-						if (!this.KeyDown && this.canJump)
+						if (!this.KeyDown && this.canJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0))
 						{
 							this.SetJump(this.JumpVelocity, jumped: true);
 						}
@@ -3949,7 +3949,7 @@ namespace Dust.CharClasses
 							this.Trajectory.X = Math.Min(this.Trajectory.X, -200f);
 						}
 					}
-					if (this.KeyJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0) && this.canJump && this.ID == 0 && Game1.stats.doubleJump < 1)
+					if (this.KeyJump && this.canJump && this.ID == 0 && Game1.stats.doubleJump < 1)
 					{
 						this.SetJump(this.JumpVelocity, jumped: true);
 						Game1.stats.doubleJump++;
@@ -3992,7 +3992,7 @@ namespace Dust.CharClasses
 						{
 							this.SetAnim("jump", 16, 0);
 						}
-						else if (this.KeyJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0))
+						else if (this.KeyJump)
 						{
 							bool flag2 = false;
 							if ((this.Face == CharDir.Left && this.KeyRight) || (this.Face == CharDir.Right && this.KeyLeft) || this.KeyDown)
@@ -4044,7 +4044,7 @@ namespace Dust.CharClasses
 						{
 							this.Friction = 0f;
 						}
-						if (this.KeyJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0) && this.canJump && this.ID == 0 && Game1.stats.doubleJump < 1)
+						if (this.KeyJump && this.canJump && this.ID == 0 && Game1.stats.doubleJump < 1)
 						{
 							this.SetJump(this.JumpVelocity, jumped: true);
 							Game1.stats.doubleJump++;
@@ -4132,7 +4132,7 @@ namespace Dust.CharClasses
 							this.SetAnim("flyattacksec", 0, 2);
 						}
 					}
-					if (this.KeySecondary && (this.ID != 0 || Game1.stats.upgrade[0] > 0))
+					if (this.KeySecondary)
 					{
 						this.SetAnim("flyattacksec", 0, 2);
 					}
@@ -4189,7 +4189,7 @@ namespace Dust.CharClasses
 							}
 							this.SetAnim("attackair", 0, 2);
 						}
-						if (this.KeySecondary && (this.ID != 0 || Game1.stats.upgrade[0] > 0))
+						if (this.KeySecondary)
 						{
 							if (this.KeyLeft)
 							{
@@ -4244,9 +4244,9 @@ namespace Dust.CharClasses
 							this.SetAnim("crouch", 0, 2);
 							this.Trajectory.X = 0f;
 						}
-						if (this.KeyJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0))
+						if (this.KeyJump)
 						{
-							if (!this.KeyDown && this.canJump)
+							if (!this.KeyDown && this.canJump && (this.ID != 0 || Game1.stats.upgrade[5] > 0))
 							{
 								this.SetJump(this.JumpVelocity, jumped: true);
 							}
@@ -4265,7 +4265,7 @@ namespace Dust.CharClasses
 						this.QueuedKey = QueuedKey.Attack;
 					}
 				}
-				if (this.KeySecondary && (this.ID != 0 || Game1.stats.upgrade[0] > 0))
+				if (this.KeySecondary)
 				{
 					this.PressedKey = PressedKeys.Secondary;
 					if (this.QueueGoal[2] > -1)

@@ -1324,6 +1324,12 @@ namespace Dust.HUD
 							case 3:
 								text = "FIDGET PROJECTILE";
 								break;
+							case 4:
+								text = "SLASH";
+								break;
+							case 5:
+								text = "JUMP";
+								break;
 							case 10:
 								text = "DASH";
 								break;

@@ -5164,6 +5164,10 @@ namespace Dust.HUD
 						{
 							found = "";
 						}
+						else if (chara.ToString() == ";")
+						{
+							break;
+						}
 						else
 						{
 							found += chara;
@@ -5226,7 +5230,7 @@ namespace Dust.HUD
 			{
 				return true;
 			}
-			else if (line[0] != '[' && line[0] != '{')
+			else if (toParse[0] != '[' && toParse[0] != '{')
             {
 				return true;
             }
@@ -5333,13 +5337,21 @@ namespace Dust.HUD
 			List<string> areaLogic = new List<string>();
 			areaLogic.AddRange(GetAreaLogicFromFile());
 			List<string> areaNames = new List<string>();
-			areaLogic.AddRange(GetAreaNamesFromFile());
+			areaNames.AddRange(GetAreaNamesFromFile());
+			for (var i = 0; i < areaLogic.Count; i++)
+			{
+				foreach (var item in areaNames)
+				{
+					areaLogic[i] = areaLogic[i].Replace(item + "&", areaLogic[areaNames.IndexOf(item)].Replace("[", "").Replace("_", "") + "&");
+					areaLogic[i] = areaLogic[i].Replace(item + "_", areaLogic[areaNames.IndexOf(item)].Replace("[", "").Replace("_", "") + "_");
+				}
+			}
 			for (var i = 0; i < spotslogic.Count; i++)
 			{
 				foreach (var item in areaNames)
 				{
-					spotslogic[i] = spotslogic[i].Replace(item+"&","("+areaLogic[areaNames.IndexOf(item)]+")&");
-					spotslogic[i] = spotslogic[i].Replace(item+"_","("+areaLogic[areaNames.IndexOf(item)]+")_");
+					spotslogic[i] = spotslogic[i].Replace(item+"&",areaLogic[areaNames.IndexOf(item)].Replace("[", "").Replace("_", "") + "&");
+					spotslogic[i] = spotslogic[i].Replace(item+"_",areaLogic[areaNames.IndexOf(item)].Replace("[", "").Replace("_", "") + "_");
 				}
 			}
 			var indexcur = Rand.GetRandomInt(0, spots.Count);
@@ -5405,7 +5417,7 @@ namespace Dust.HUD
 							}
 						}
 					}
-					System.Diagnostics.Debug.Print("placed " + spotslogic[indexcur]);
+					System.Diagnostics.Debug.Print("placed");
 					var itemstring = "";
 					if (spotcounts[spots.IndexOf(item)] >= 1)
 					{
@@ -5433,7 +5445,6 @@ namespace Dust.HUD
 							pool.RemoveAt(chosen);
 						}
 					}
-					System.Diagnostics.Debug.Print("ITEM " + itemstring);
 					filetowrite.WriteLine(item + ":" + itemstring);
 					spots.RemoveAt(indexcur);
 					spotcounts.RemoveAt(indexcur);
@@ -5443,24 +5454,6 @@ namespace Dust.HUD
 				}
 				else
 				{
-						var toprintstring = "";
-						foreach (var itmitm in placed)
-						{
-							toprintstring += itmitm + " ";
-						}
-						System.Diagnostics.Debug.Print(toprintstring + "\n");
-						toprintstring = "";
-						foreach (var itmitm in pool)
-						{
-							toprintstring += itmitm + " ";
-						}
-						System.Diagnostics.Debug.Print(toprintstring + "\n");
-						toprintstring = "";
-						foreach (var itmitm in spots)
-						{
-							toprintstring += itmitm + " ";
-						}
-						System.Diagnostics.Debug.Print(toprintstring + "\n");
 						filetowrite.Close();
 						System.Diagnostics.Debug.Print("RESET");
 						return false;
@@ -5477,8 +5470,6 @@ namespace Dust.HUD
 			{
 				didit = this.MakeSeed();
 			}
-			Game1.stats.GetChestFromFile("Starting Ability 1", pMan);
-			Game1.stats.GetChestFromFile("Starting Ability 2", pMan);
 			WeatherAudio.Play(WeatherAudioType.Silent);
 			Game1.stats.ResetGame(pMan, this.character);
 			Game1.stats.gameDifficulty = (Game1.stats.startDifficulty = (byte)difficulty);
@@ -5490,6 +5481,9 @@ namespace Dust.HUD
 			Game1.worldScale = 0.75f;
 			Game1.events.fadeLength = (Game1.events.fadeTimer = 10000f);
 			Sound.DimSFXVolume(0f);
+			Game1.stats.GetChestFromFile("Starting Ability 1", pMan);
+			Game1.stats.GetChestFromFile("Starting Ability 2", pMan);
+			Game1.stats.GetChestFromFile("Starting Ability 3", pMan);
 		}
 
 		public void QuitGame(ParticleManager pMan)
