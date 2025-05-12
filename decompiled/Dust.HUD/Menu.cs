@@ -138,6 +138,8 @@ namespace Dust.HUD
 
 		private static bool prevAutoHeal;
 
+		private static bool randomizeStartingAbilities;
+
 		private static bool prevAutoLevelUp;
 
 		private static bool prevAutoAdvance;
@@ -1891,7 +1893,7 @@ namespace Dust.HUD
 								s = Strings_Prompts.Save1Desc;
 								break;
 							case 2:
-								s = ((Game1.events.currentEvent >= 70) ? ((Game1.stats.Equipment[300] >= 1) ? Strings_Prompts.Save2Desc3 : Strings_Prompts.Save2Desc2) : Strings_Prompts.Save2Desc1);
+								s = ((Game1.events.currentEvent >= 70) ? (Strings_Prompts.Save2Desc3) : Strings_Prompts.Save2Desc1);
 								break;
 						}
 						break;
@@ -2155,7 +2157,7 @@ namespace Dust.HUD
 						}
 						else if (this.curMenuOption == 2)
 						{
-							if (Game1.events.currentEvent >= 70 && Game1.stats.Equipment[300] > 0)
+							if (Game1.events.currentEvent >= 70)
 							{
 								this.prompt = promptDialogue.Teleport;
 								this.curMenuOption = 0;
@@ -2199,7 +2201,6 @@ namespace Dust.HUD
 					{
 						if (this.curMenuOption == 0)
 						{
-							Game1.stats.Equipment[300]--;
 							this.prompt = promptDialogue.None;
 							this.curMenuOption = 0;
 							string path = "worldmap";
@@ -2734,6 +2735,7 @@ namespace Dust.HUD
 			Menu.prevAutoLevelUp = Game1.settings.AutoLevelUp;
 			Menu.prevAutoAdvance = Game1.settings.AutoAdvance;
 			Menu.prevColorBlind = Game1.settings.ColorBlind;
+			Menu.randomizeStartingAbilities = Game1.settings.RandomizeStartingAbilities;
 			this.prevDifficulty = Game1.stats.gameDifficulty;
 			Menu.prevResolution = new Vector2(Game1.screenWidth, Game1.screenHeight);
 			bool flag = (Game1.settings.FullScreen = Game1.graphics.IsFullScreen);
@@ -2817,6 +2819,9 @@ namespace Dust.HUD
 					{
 						text = text + "[N]" + Strings_Options.Cheating;
 					}
+					break;
+				case 9:
+					text = Strings_Options.RandomizeStartingAbilities;
 					break;
 			}
 			this.optionDesc = Game1.smallText.WordWrap(text, 0.9f, width, TextAlign.Center);
@@ -3055,6 +3060,22 @@ namespace Dust.HUD
 						Game1.settings.ColorBlind = true;
 					}
 				}
+				else if (this.curMenuOption == 9)
+				{
+					if (Game1.hud.KeyRight)
+					{
+						if (Game1.settings.RandomizeStartingAbilities)
+						{
+							Sound.PlayCue("menu_click");
+							Game1.settings.RandomizeStartingAbilities = false;
+						}
+					}
+					else if (Game1.hud.KeyLeft && !Game1.settings.RandomizeStartingAbilities)
+					{
+						Sound.PlayCue("menu_click");
+						Game1.settings.RandomizeStartingAbilities = true;
+					}
+				}
 				else if (this.curMenuOption == 8)
 				{
 					if (Game1.stats.playerLifeState == 0)
@@ -3210,6 +3231,7 @@ namespace Dust.HUD
 			Game1.settings.AutoLevelUp = Menu.prevAutoLevelUp;
 			Game1.settings.AutoAdvance = Menu.prevAutoAdvance;
 			Game1.settings.ColorBlind = Menu.prevColorBlind;
+			Game1.settings.RandomizeStartingAbilities = Menu.randomizeStartingAbilities;
 			Game1.stats.gameDifficulty = this.prevDifficulty;
 			Game1.SetResolution((int)Menu.prevResolution.X, (int)Menu.prevResolution.Y);
 			if (Menu.prevFullScreen != Game1.graphics.IsFullScreen)
@@ -3233,7 +3255,7 @@ namespace Dust.HUD
 			int num = 9;
 			if (Game1.gameMode == Game1.GameModes.MainMenu)
 			{
-				num = 8;
+				num = 9;
 			}
 			Game1.hud.DrawBorder(new Vector2(Menu.leftEdge, Menu.topEdge), Menu.rightEdge - Menu.leftEdge, Menu.bottomEdge - Menu.topEdge, Color.White, 0.9f, 365);
 			Color color = new Color(0f, 0f, 0f, 0.5f);
@@ -3390,12 +3412,26 @@ namespace Dust.HUD
 						Game1.bigText.DrawText(pos + new Vector2(140f, 0f), Strings_Options.Off, size, 600f, TextAlign.Left);
 						break;
 					}
+				case 9:
+					{
+						Game1.bigText.DrawText(pos, Strings_Options.RandomizeStartingAbilitiesTitle, size, 600f, TextAlign.Right);
+						float num = 1f;
+						float num2 = 0.25f;
+						if (!Game1.settings.RandomizeStartingAbilities)
+						{
+							num = 0.25f;
+							num2 = 1f;
+						}
+						Game1.bigText.Color = new Color(1f, 1f, 1f, num * alpha);
+						Game1.bigText.DrawText(pos + new Vector2(100f, 0f), Strings_Options.On, size, 600f, TextAlign.Right);
+						Game1.bigText.Color = new Color(1f, 1f, 1f, num2 * alpha);
+						Game1.bigText.DrawText(pos + new Vector2(140f, 0f), Strings_Options.Off, size, 600f, TextAlign.Left);
+						break;
+					}
 				case 8:
 					Game1.bigText.DrawText(pos, Strings_Options.DifficultyTitle, size, 600f, TextAlign.Right);
 					Game1.bigText.Color = new Color(1f, 1f, 1f, alpha);
 					Game1.bigText.DrawText(pos, "< " + Strings_Options.ResourceManager.GetString("Difficulty" + Game1.stats.gameDifficulty) + " >", size, 300f, TextAlign.Center);
-					break;
-				case 9:
 					break;
 			}
 		}
@@ -3422,6 +3458,10 @@ namespace Dust.HUD
 		private void DrawSettingsPC()
 		{
 			int num = 19;
+			if (Game1.gameMode == Game1.GameModes.MainMenu)
+            {
+				num += 2;
+            }
 			int count = Game1.pcManager.inputKeyList.Count;
 			int num2 = Math.Max(Menu.rightEdge - Menu.leftEdge, 1000);
 			if (this.configuringControls > 0)
@@ -3852,6 +3892,13 @@ namespace Dust.HUD
 					else
 					{
 						this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.AutoFireTitle, Strings_Options.PCEnabledLocked, Strings_Options.AutoFire1, textSize);
+					}
+					break;
+				case 21:
+					Game1.smallText.DrawText(pos, Strings_Options.RandomizeStartingAbilitiesTitle, textSize);
+					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandomizeStartingAbilitiesTitle, Game1.settings.RandomizeStartingAbilities ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.RandomizeStartingAbilities, textSize) != 0)
+					{
+						Game1.settings.RandomizeStartingAbilities = !Game1.settings.RandomizeStartingAbilities;
 					}
 					break;
 				case 7:
@@ -5327,6 +5374,12 @@ namespace Dust.HUD
 			progs.AddRange(GetProgFromFile());
 			List<string> pool = new List<string>();
 			pool.AddRange(GetItemsFromFile());
+			if (!Game1.settings.RandomizeStartingAbilities)
+            {
+				pool.Remove("~3");
+				pool.Remove("~4");
+				pool.Remove("~5");
+			}
 			List<string> placed = new List<string>();
 			List<string> spots = new List<string>();
 			spots.AddRange(GetLocationsFromFile());
@@ -5425,6 +5478,21 @@ namespace Dust.HUD
 						//for (int i = pool.Count; i > 0; i--)
 						{
 							var chosen = Rand.GetRandomInt(0, pool.Count);
+							if (item == "Starting Ability 1" && !Game1.settings.RandomizeStartingAbilities)
+							{
+								pool.Add("~3");
+								chosen = pool.IndexOf("~3");
+							}
+							else if (item == "Starting Ability 2" && !Game1.settings.RandomizeStartingAbilities)
+							{
+								pool.Add("~4");
+								chosen = pool.IndexOf("~4");
+							}
+							else if (item == "Starting Ability 3" && !Game1.settings.RandomizeStartingAbilities)
+							{
+								pool.Add("~5");
+								chosen = pool.IndexOf("~5");
+							}
 							if (i == 0 && placeablespots.Count == 1)
 							{
 								List<int> canchoose = new List<int>();
@@ -5437,7 +5505,25 @@ namespace Dust.HUD
 								}
 								if (canchoose.Count > 0)
 								{
-									chosen = canchoose[Rand.GetRandomInt(0, canchoose.Count)];
+									if (item == "Starting Ability 1" && !Game1.settings.RandomizeStartingAbilities)
+									{
+										pool.Add("~3");
+										chosen = pool.IndexOf("~3");
+									}
+									else if (item == "Starting Ability 2" && !Game1.settings.RandomizeStartingAbilities)
+									{
+										pool.Add("~4");
+										chosen = pool.IndexOf("~4");
+									}
+									else if (item == "Starting Ability 3" && !Game1.settings.RandomizeStartingAbilities)
+									{
+										pool.Add("~5");
+										chosen = pool.IndexOf("~5");
+									}
+									else
+									{
+										chosen = canchoose[Rand.GetRandomInt(0, canchoose.Count)];
+									}
 								}
 							}
 							itemstring += pool[chosen] + ",";

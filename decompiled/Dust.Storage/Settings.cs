@@ -36,6 +36,8 @@ namespace Dust.Storage
 
 		private bool unlockedTime;
 
+		private bool randomizeStartingAbilities;
+
 		private bool[] globalAchievement = new bool[30];
 
 		private int inputMethod;
@@ -172,6 +174,18 @@ namespace Dust.Storage
 			}
 		}
 
+		public bool RandomizeStartingAbilities
+		{
+			get
+			{
+				return this.randomizeStartingAbilities;
+			}
+			set
+			{
+				this.randomizeStartingAbilities = value;
+			}
+		}
+
 		public bool Commentary
 		{
 			get
@@ -259,6 +273,7 @@ namespace Dust.Storage
 			this.fullScreen = true;
 			this.depthOfField = true;
 			this.bloom = true;
+			this.randomizeStartingAbilities = false;
 			this.hiQualityPortraits = false;
 			this.weatherOn = true;
 			this.unlockedTime = false;
@@ -296,6 +311,7 @@ namespace Dust.Storage
 				writer.Write(this.globalAchievement[i]);
 			}
 			writer.Write(this.InputMethod);
+			writer.Write(this.randomizeStartingAbilities);
 			Game1.pcManager.WriteMapping(writer);
 		}
 
@@ -338,6 +354,7 @@ namespace Dust.Storage
 			}
 			this.SyncAchievements();
 			int num2 = (int)(Game1.pcManager.inputDevice = (InputDevice)(this.InputMethod = reader.ReadInt32()));
+			this.RandomizeStartingAbilities = reader.ReadBoolean();
 			Game1.pcManager.ReadMapping(reader);
 		}
 

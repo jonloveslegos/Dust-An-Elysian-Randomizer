@@ -341,4 +341,10 @@ Previously saved data will be lost.</value>
   <data name="SaveLevel" xml:space="preserve">
     <value>Level:</value>
   </data>
+  <data name="Options5" xml:space="preserve">
+    <value>Randomizer</value>
+  </data>
+  <data name="Options5Desc" xml:space="preserve">
+    <value>Choose randomizer options.</value>
+  </data>
 </root>

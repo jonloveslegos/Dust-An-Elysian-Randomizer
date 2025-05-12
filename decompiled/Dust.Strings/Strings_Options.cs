@@ -174,6 +174,10 @@ namespace Dust.Strings
 
 		internal static string SoundTitle => Strings_Options.ResourceManager.GetString("SoundTitle", Strings_Options.resourceCulture);
 
+		internal static string RandomizeStartingAbilities => Strings_Options.ResourceManager.GetString("RandomizeStartingAbilities", Strings_Options.resourceCulture);
+
+		internal static string RandomizeStartingAbilitiesTitle => Strings_Options.ResourceManager.GetString("RandomizeStartingAbilitiesTitle", Strings_Options.resourceCulture);
+
 		internal Strings_Options()
 		{
 		}

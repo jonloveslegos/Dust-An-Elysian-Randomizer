@@ -172,8 +172,8 @@
     <value>Not Signed In</value>
   </data>
   <data name="Teleport0Desc" xml:space="preserve">
-    <value>Use a Teleport Stone and return to the World Map.
-You have [TELSTONES] Teleport Stones in your possession.</value>
+    <value>Return to the World Map.
+Randomizer removes Teleport Stone requirement.</value>
   </data>
   <data name="Teleport1Desc" xml:space="preserve">
     <value>Cancel Teleport.</value>

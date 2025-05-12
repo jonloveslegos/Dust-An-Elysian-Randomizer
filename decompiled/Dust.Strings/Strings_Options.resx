@@ -337,4 +337,11 @@ Default = (On).</value>
   <data name="PCControls" xml:space="preserve">
     <value>Dust: An Elysian Tail will dynamically detect your input method and display the user interface accordingly.</value>
   </data>
+  <data name="RandomizeStartingAbilities" xml:space="preserve">
+    <value>Toggle randomizing Starting Abilities (Slash, Jump, Fidget starting projectile)
+Default = (Off).</value>
+  </data>
+  <data name="RandomizeStartingAbilitiesTitle" xml:space="preserve">
+    <value>Randomize Abilities</value>
+  </data>
 </root>
