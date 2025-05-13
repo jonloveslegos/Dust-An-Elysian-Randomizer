@@ -164,6 +164,8 @@ namespace Dust
 
 		public byte[] shopEquipment;
 
+		public byte[] shopEquipGotten;
+
 		public int[] Material = new int[100];
 
 		public int[] shopMaterial;
@@ -247,9 +249,11 @@ namespace Dust
 		private void ResetShopItems()
 		{
 			this.shopEquipment = new byte[this.Equipment.Length];
+			this.shopEquipGotten = new byte[this.Equipment.Length];
 			for (int i = 0; i < this.shopEquipment.Length; i++)
 			{
 				this.shopEquipment[i] = 0;
+				this.shopEquipGotten[i] = 0;
 			}
 			this.shopMaterial = new int[this.Material.Length];
 			for (int j = 0; j < this.shopMaterial.Length; j++)
@@ -489,6 +493,7 @@ namespace Dust
 			{
 				this.Equipment[i] = 0;
 				this.shopEquipment[i] = 0;
+				this.shopEquipGotten[i] = 0;
 			}
 			for (int j = 0; j < this.EquipBluePrint.Length; j++)
 			{
@@ -845,6 +850,24 @@ namespace Dust
 					upgradegot = true;
 					this.EarnUpgrade(int.Parse(gotten.Replace("~", "")), (byte)(Game1.stats.upgrade[int.Parse(gotten.Replace("~", ""))] + 1));
 				}
+				else if (int.Parse(gotten) < 0)
+					this.AcquireEquip((EquipType)(-int.Parse(gotten)), 1, _bluePrint: true);
+				else
+					this.AcquireEquip((EquipType)int.Parse(gotten), 1, _bluePrint: false);
+			}
+		}
+
+		public void GetChestFromFileNoText(string chestID)
+		{
+			var itemid = ReturnChestItems(chestID);
+			if (Game1.debugging)
+			{
+				Debug.WriteLine(chestID);
+			}
+			foreach (var gotten in itemid)
+			{
+				if (gotten.Contains("~"))
+					this.EarnUpgrade(int.Parse(gotten.Replace("~", "")), (byte)(Game1.stats.upgrade[int.Parse(gotten.Replace("~", ""))] + 1));
 				else if (int.Parse(gotten) < 0)
 					this.AcquireEquip((EquipType)(-int.Parse(gotten)), 1, _bluePrint: true);
 				else

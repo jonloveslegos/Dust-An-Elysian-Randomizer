@@ -131,6 +131,10 @@ namespace Dust.Storage
 			writer.Write((int)Game1.wManager.weatherAudioType);
 			Game1.questManager.WriteQuests(writer);
 			Game1.navManager.WriteSaveFile(writer);
+			for (int n = 0; n < Game1.stats.shopEquipGotten.Length; n++)
+			{
+				writer.Write(Game1.stats.shopEquipGotten[n]);
+			}
 		}
 
 		public bool Read(BinaryReader reader)
@@ -255,6 +259,10 @@ namespace Dust.Storage
 			catch
 			{
 				return false;
+			}
+			for (int n = 0; n < Game1.stats.shopEquipGotten.Length; n++)
+			{
+				Game1.stats.shopEquipGotten[n] = reader.ReadByte();
 			}
 			Game1.pManager.Reset(removeWeather: true, removeBombs: true);
 			Game1.map.SwitchMap(Game1.pManager, Game1.character, Game1.map.path, loading: true);

@@ -5374,10 +5374,10 @@ namespace Dust.HUD
 			progs.AddRange(GetProgFromFile());
 			List<string> pool = new List<string>();
 			pool.AddRange(GetItemsFromFile());
+			pool.Remove("~4");
 			if (!Game1.settings.RandomizeStartingAbilities)
             {
 				pool.Remove("~3");
-				pool.Remove("~4");
 				pool.Remove("~5");
 			}
 			List<string> placed = new List<string>();
@@ -5483,7 +5483,7 @@ namespace Dust.HUD
 								pool.Add("~3");
 								chosen = pool.IndexOf("~3");
 							}
-							else if (item == "Starting Ability 2" && !Game1.settings.RandomizeStartingAbilities)
+							else if (item == "Starting Ability 2")
 							{
 								pool.Add("~4");
 								chosen = pool.IndexOf("~4");

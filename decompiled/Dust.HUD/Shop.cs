@@ -645,7 +645,16 @@ public class Shop
 		}
 		if (Shop.listType == ShopListType.Equipment)
 		{
-			Game1.stats.Equipment[Shop.finalItem] += (byte)this.multiplier;
+			if (Game1.hud.shopType == ShopType.Shop && Game1.stats.ReturnChestItems("Shop " + Game1.inventoryManager.itemName + " " + ((int)Game1.stats.shopEquipGotten[Shop.finalItem]).ToString()).Count > 0)
+			{
+				this.multiplier = 1;
+				Game1.stats.GetChestFromFileNoText("Shop " + Game1.inventoryManager.itemName + " " + ((int)Game1.stats.shopEquipGotten[Shop.finalItem]).ToString());
+			}
+			else
+			{
+				Game1.stats.Equipment[Shop.finalItem] += (byte)this.multiplier;
+			}
+			Game1.stats.shopEquipGotten[Shop.finalItem] += (byte)this.multiplier;
 			if (Game1.stats.shopEquipment[Shop.finalItem] < byte.MaxValue && Game1.hud.shopType == ShopType.Shop)
 			{
 				Game1.stats.shopEquipment[Shop.finalItem] -= (byte)this.multiplier;
@@ -1409,8 +1418,85 @@ public class Shop
 				{
 					Game1.smallText.Color = new Color(1f, 1f, 1f, Shop.itemAlpha * Shop.shopAlpha);
 					Vector2 vector8 = vector + new Vector2(60f, 210f);
-					Game1.smallText.DrawText(vector8, Game1.inventoryManager.itemName, num22, 0f, TextAlign.Left);
-					vector8.Y += Game1.smallFont.MeasureString(Game1.inventoryManager.itemName).Y * num22;
+					string trueItemName = "";
+					if (Shop.purchaseMode == PurchaseMode.Buy && Shop.listType == ShopListType.Equipment && Game1.hud.shopType == ShopType.Shop)
+					{
+						if (Game1.stats.shopEquipment[this.GetItemID(Shop.shopItem)] < byte.MaxValue || Game1.stats.ReturnChestItems("Shop " + Game1.inventoryManager.itemName + " " + ((int)Game1.stats.shopEquipGotten[this.GetItemID(Shop.shopItem)]).ToString()).Count > 0)
+						{
+							Console.WriteLine("Shop " + Game1.inventoryManager.itemName + " " + ((int)Game1.stats.shopEquipGotten[this.GetItemID(Shop.shopItem)]).ToString() + ":" + this.GetItemID(Shop.shopItem).ToString() + ",");
+						}
+						if (Game1.stats.ReturnChestItems("Shop " + Game1.inventoryManager.itemName + " " + ((int)Game1.stats.shopEquipGotten[this.GetItemID(Shop.shopItem)]).ToString()).Count == 0)
+						{
+							trueItemName = Game1.inventoryManager.itemName;
+						}
+						else 
+						{
+							var trueId = Game1.stats.ReturnChestItems("Shop " + Game1.inventoryManager.itemName + " " + ((int)Game1.stats.shopEquipGotten[this.GetItemID(Shop.shopItem)]).ToString())[0];
+							if (trueId.Contains("~"))
+							{
+								switch (int.Parse(trueId.Replace("~", "")))
+								{
+									case 0:
+										trueItemName = "DUST STORM";
+										break;
+									case 1:
+										trueItemName = "FIDGET PROJECTILE";
+										break;
+									case 2:
+										trueItemName = "FIDGET PROJECTILE";
+										break;
+									case 3:
+										trueItemName = "FIDGET PROJECTILE";
+										break;
+									case 4:
+										trueItemName = "SLASH";
+										break;
+									case 5:
+										trueItemName = "JUMP";
+										break;
+									case 10:
+										trueItemName = "DASH";
+										break;
+									case 12:
+										trueItemName = "AERIAL DUST STORM";
+										break;
+									case 14:
+										trueItemName = "CROUCH SLIDE";
+										break;
+									case 15:
+										trueItemName = "DOUBLE JUMP";
+										break;
+									case 16:
+										trueItemName = "IRON GRIP";
+										break;
+									case 17:
+										trueItemName = "BOOST JUMP";
+										break;
+									default:
+										trueItemName = "UNKNOWN ITEM";
+										break;
+								}
+								Shop.itemInfoDisplay = "Ability.";
+								Shop.itemStats = "";
+							}
+							else
+							{
+								Shop.itemInfoDisplay = Game1.smallText.WordWrap(Game1.inventoryManager.equipItem[int.Parse(trueId)].Description, 0.8f, 380f, TextAlign.Left);
+								Shop.itemStats = Game1.smallText.WordWrap(Game1.inventoryManager.equipItem[int.Parse(trueId)].StatInfo, 0.8f, 380f, TextAlign.Left);
+								if (this.CheckEquipped(Shop.finalItem))
+								{
+									Shop.itemStats = Game1.smallText.WordWrap(Game1.inventoryManager.equipItem[int.Parse(trueId)].StatInfo + "[N]" + Strings_Shop.ItemEquipped, 0.8f, 380f, TextAlign.Left);
+								}
+								trueItemName = Game1.inventoryManager.equipItem[int.Parse(trueId)].Name;
+							} 
+						}
+					}
+                    else
+					{
+						trueItemName = Game1.inventoryManager.itemName;
+					}
+					Game1.smallText.DrawText(vector8, trueItemName, num22, 0f, TextAlign.Left);
+					vector8.Y += Game1.smallFont.MeasureString(trueItemName).Y * num22;
 					Shop.sprite.Draw(Shop.hudTex[2], vector8 + new Vector2(140f, -3f), new Rectangle(0, 502, 326, 18), Game1.smallText.Color, 0f, new Vector2(163f, 0f), new Vector2(0.8f, 0.5f), SpriteEffects.None, 0f);
 					vector8.Y += 5f;
 					num22 = 0.7f;
