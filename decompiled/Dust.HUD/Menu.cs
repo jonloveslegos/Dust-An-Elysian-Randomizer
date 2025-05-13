@@ -140,6 +140,8 @@ namespace Dust.HUD
 
 		private static bool randomizeStartingAbilities;
 
+		private static bool RandomizeSkillGems;
+
 		private static bool prevAutoLevelUp;
 
 		private static bool prevAutoAdvance;
@@ -2736,6 +2738,7 @@ namespace Dust.HUD
 			Menu.prevAutoAdvance = Game1.settings.AutoAdvance;
 			Menu.prevColorBlind = Game1.settings.ColorBlind;
 			Menu.randomizeStartingAbilities = Game1.settings.RandomizeStartingAbilities;
+			Menu.RandomizeSkillGems = Game1.settings.RandomizeSkillGems;
 			this.prevDifficulty = Game1.stats.gameDifficulty;
 			Menu.prevResolution = new Vector2(Game1.screenWidth, Game1.screenHeight);
 			bool flag = (Game1.settings.FullScreen = Game1.graphics.IsFullScreen);
@@ -2822,6 +2825,9 @@ namespace Dust.HUD
 					break;
 				case 9:
 					text = Strings_Options.RandomizeStartingAbilities;
+					break;
+				case 10:
+					text = Strings_Options.RandomizeSkillGems;
 					break;
 			}
 			this.optionDesc = Game1.smallText.WordWrap(text, 0.9f, width, TextAlign.Center);
@@ -3076,6 +3082,22 @@ namespace Dust.HUD
 						Game1.settings.RandomizeStartingAbilities = true;
 					}
 				}
+				else if (this.curMenuOption == 10)
+				{
+					if (Game1.hud.KeyRight)
+					{
+						if (Game1.settings.RandomizeSkillGems)
+						{
+							Sound.PlayCue("menu_click");
+							Game1.settings.RandomizeSkillGems = false;
+						}
+					}
+					else if (Game1.hud.KeyLeft && !Game1.settings.RandomizeSkillGems)
+					{
+						Sound.PlayCue("menu_click");
+						Game1.settings.RandomizeSkillGems = true;
+					}
+				}
 				else if (this.curMenuOption == 8)
 				{
 					if (Game1.stats.playerLifeState == 0)
@@ -3232,6 +3254,7 @@ namespace Dust.HUD
 			Game1.settings.AutoAdvance = Menu.prevAutoAdvance;
 			Game1.settings.ColorBlind = Menu.prevColorBlind;
 			Game1.settings.RandomizeStartingAbilities = Menu.randomizeStartingAbilities;
+			Game1.settings.RandomizeSkillGems = Menu.RandomizeSkillGems;
 			Game1.stats.gameDifficulty = this.prevDifficulty;
 			Game1.SetResolution((int)Menu.prevResolution.X, (int)Menu.prevResolution.Y);
 			if (Menu.prevFullScreen != Game1.graphics.IsFullScreen)
@@ -3428,6 +3451,22 @@ namespace Dust.HUD
 						Game1.bigText.DrawText(pos + new Vector2(140f, 0f), Strings_Options.Off, size, 600f, TextAlign.Left);
 						break;
 					}
+				case 10:
+					{
+						Game1.bigText.DrawText(pos, Strings_Options.RandomizeSkillGemsTitle, size, 600f, TextAlign.Right);
+						float num = 1f;
+						float num2 = 0.25f;
+						if (!Game1.settings.RandomizeSkillGems)
+						{
+							num = 0.25f;
+							num2 = 1f;
+						}
+						Game1.bigText.Color = new Color(1f, 1f, 1f, num * alpha);
+						Game1.bigText.DrawText(pos + new Vector2(100f, 0f), Strings_Options.On, size, 600f, TextAlign.Right);
+						Game1.bigText.Color = new Color(1f, 1f, 1f, num2 * alpha);
+						Game1.bigText.DrawText(pos + new Vector2(140f, 0f), Strings_Options.Off, size, 600f, TextAlign.Left);
+						break;
+					}
 				case 8:
 					Game1.bigText.DrawText(pos, Strings_Options.DifficultyTitle, size, 600f, TextAlign.Right);
 					Game1.bigText.Color = new Color(1f, 1f, 1f, alpha);
@@ -3457,10 +3496,10 @@ namespace Dust.HUD
 
 		private void DrawSettingsPC()
 		{
-			int num = 19;
+			int num = 18;
 			if (Game1.gameMode == Game1.GameModes.MainMenu)
             {
-				num += 2;
+				num += 3;
             }
 			int count = Game1.pcManager.inputKeyList.Count;
 			int num2 = Math.Max(Menu.rightEdge - Menu.leftEdge, 1000);
@@ -3858,7 +3897,7 @@ namespace Dust.HUD
 						}
 					}
 					break;
-				case 17:
+				case 16:
 					{
 						Game1.smallText.DrawText(pos, Strings_Options.PCControlsTitle, textSize);
 						int num3 = this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.PCControlsTitle, Strings_Options.ResourceManager.GetString("PCControlsOption" + Game1.settings.InputMethod), Strings_Options.PCControls, textSize);
@@ -3873,14 +3912,14 @@ namespace Dust.HUD
 						}
 						break;
 					}
-				case 18:
+				case 17:
 					Game1.smallText.DrawText(pos, Strings_Options.RumbleTitle, textSize);
 					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RumbleTitle, Game1.settings.Rumble ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.Rumble, textSize) != 0)
 					{
 						Game1.settings.Rumble = !Game1.settings.Rumble;
 					}
 					break;
-				case 19:
+				case 18:
 					Game1.smallText.DrawText(pos, Strings_Options.AutoFireTitle, textSize);
 					if (Game1.stats.gameDifficulty > 0)
 					{
@@ -3894,16 +3933,22 @@ namespace Dust.HUD
 						this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.AutoFireTitle, Strings_Options.PCEnabledLocked, Strings_Options.AutoFire1, textSize);
 					}
 					break;
-				case 21:
+				case 20:
 					Game1.smallText.DrawText(pos, Strings_Options.RandomizeStartingAbilitiesTitle, textSize);
 					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandomizeStartingAbilitiesTitle, Game1.settings.RandomizeStartingAbilities ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.RandomizeStartingAbilities, textSize) != 0)
 					{
 						Game1.settings.RandomizeStartingAbilities = !Game1.settings.RandomizeStartingAbilities;
 					}
 					break;
+				case 21:
+					Game1.smallText.DrawText(pos, Strings_Options.RandomizeSkillGemsTitle, textSize);
+					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandomizeSkillGemsTitle, Game1.settings.RandomizeSkillGems ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.RandomizeSkillGems, textSize) != 0)
+					{
+						Game1.settings.RandomizeSkillGems = !Game1.settings.RandomizeSkillGems;
+					}
+					break;
 				case 7:
 				case 10:
-				case 16:
 					break;
 			}
 		}
@@ -5380,6 +5425,13 @@ namespace Dust.HUD
 				pool.Remove("~3");
 				pool.Remove("~5");
 			}
+			if (!Game1.settings.RandomizeSkillGems)
+            {
+                for (int i = 0; i < 60; i++)
+				{
+					pool.Remove("!");
+				}
+			}
 			List<string> placed = new List<string>();
 			List<string> spots = new List<string>();
 			spots.AddRange(GetLocationsFromFile());
@@ -5493,6 +5545,11 @@ namespace Dust.HUD
 								pool.Add("~5");
 								chosen = pool.IndexOf("~5");
 							}
+							else if (item.Contains("Level") && !Game1.settings.RandomizeSkillGems)
+							{
+								pool.Add("!");
+								chosen = pool.IndexOf("!");
+							}
 							if (i == 0 && placeablespots.Count == 1)
 							{
 								List<int> canchoose = new List<int>();
@@ -5519,6 +5576,11 @@ namespace Dust.HUD
 									{
 										pool.Add("~5");
 										chosen = pool.IndexOf("~5");
+									}
+									else if (item.Contains("Level") && !Game1.settings.RandomizeSkillGems)
+									{
+										pool.Add("!");
+										chosen = pool.IndexOf("!");
 									}
 									else
 									{

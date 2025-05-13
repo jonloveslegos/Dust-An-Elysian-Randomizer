@@ -1479,6 +1479,12 @@ public class Shop
 								Shop.itemInfoDisplay = "Ability.";
 								Shop.itemStats = "";
 							}
+							else if (trueId == "!")
+							{
+								trueItemName = "Skill Gem";
+								Shop.itemInfoDisplay = "";
+								Shop.itemStats = "";
+							}
 							else
 							{
 								Shop.itemInfoDisplay = Game1.smallText.WordWrap(Game1.inventoryManager.equipItem[int.Parse(trueId)].Description, 0.8f, 380f, TextAlign.Left);

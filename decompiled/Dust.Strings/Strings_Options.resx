@@ -344,4 +344,11 @@ Default = (Off).</value>
   <data name="RandomizeStartingAbilitiesTitle" xml:space="preserve">
     <value>Randomize Abilities</value>
   </data>
+  <data name="RandomizeSkillGems" xml:space="preserve">
+    <value>Toggle randomizing Skill Gems
+Default = (Off).</value>
+  </data>
+  <data name="RandomizeSkillGemsTitle" xml:space="preserve">
+    <value>Randomize Skill Gems</value>
+  </data>
 </root>

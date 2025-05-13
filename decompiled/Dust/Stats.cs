@@ -850,6 +850,22 @@ namespace Dust
 					upgradegot = true;
 					this.EarnUpgrade(int.Parse(gotten.Replace("~", "")), (byte)(Game1.stats.upgrade[int.Parse(gotten.Replace("~", ""))] + 1));
 				}
+				else if (gotten == "!")
+                {
+					if (Game1.settings.AutoLevelUp || this.gameDifficulty == 0)
+					{
+						this.UpgradeStats(this.BalanceUpgrades(1));
+						if (!Game1.IsTrial)
+						{
+							Game1.awardsManager.EarnAchievement(Achievement.LevelUp, forceCheck: false);
+						}
+					}
+					else
+					{
+						this.skillPoints++;
+					}
+					Game1.hud.levelUpEffect = true;
+				}
 				else if (int.Parse(gotten) < 0)
 					this.AcquireEquip((EquipType)(-int.Parse(gotten)), 1, _bluePrint: true);
 				else
@@ -868,6 +884,21 @@ namespace Dust
 			{
 				if (gotten.Contains("~"))
 					this.EarnUpgrade(int.Parse(gotten.Replace("~", "")), (byte)(Game1.stats.upgrade[int.Parse(gotten.Replace("~", ""))] + 1));
+				else if (gotten == "!")
+				{
+					if (Game1.settings.AutoLevelUp || this.gameDifficulty == 0)
+					{
+						this.UpgradeStats(this.BalanceUpgrades(1));
+						if (!Game1.IsTrial)
+						{
+							Game1.awardsManager.EarnAchievement(Achievement.LevelUp, forceCheck: false);
+						}
+					}
+					else
+					{
+						this.skillPoints++;
+					}
+				}
 				else if (int.Parse(gotten) < 0)
 					this.AcquireEquip((EquipType)(-int.Parse(gotten)), 1, _bluePrint: true);
 				else
@@ -1648,20 +1679,8 @@ namespace Dust
 				num++;
 			}
 			this.luck = Math.Max(this.LEVEL / 8, 1);
-			if (Game1.settings.AutoLevelUp || this.gameDifficulty == 0)
-			{
-				this.UpgradeStats(this.BalanceUpgrades(1));
-				if (!Game1.IsTrial)
-				{
-					Game1.awardsManager.EarnAchievement(Achievement.LevelUp, forceCheck: false);
-				}
-			}
-			else
-			{
-				this.skillPoints++;
-			}
 			Game1.hud.levelUpQueue++;
-			Game1.hud.levelUpEffect = true;
+			GetChestFromFile("Level"+(this.LEVEL/4).ToString(), Game1.pManager);
 		}
 
 		private void CheckStatDrops(ref float dropBonus, ref float goldBonus, ref float xpBonus)
