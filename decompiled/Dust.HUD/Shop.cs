@@ -1485,6 +1485,16 @@ public class Shop
 								Shop.itemInfoDisplay = "";
 								Shop.itemStats = "";
 							}
+							else if (trueId.Contains("-")
+							{
+								Shop.itemInfoDisplay = Game1.smallText.WordWrap(Game1.inventoryManager.equipItem[int.Parse(trueId.Replace("-", ""))].Description, 0.8f, 380f, TextAlign.Left);
+								Shop.itemStats = Game1.smallText.WordWrap(Game1.inventoryManager.equipItem[int.Parse(trueId.Replace("-", ""))].StatInfo, 0.8f, 380f, TextAlign.Left);
+								if (this.CheckEquipped(Shop.finalItem))
+								{
+									Shop.itemStats = Game1.smallText.WordWrap(Game1.inventoryManager.equipItem[int.Parse(trueId.Replace("-", ""))].StatInfo + "[N]" + Strings_Shop.ItemEquipped, 0.8f, 380f, TextAlign.Left);
+								}
+								trueItemName = Game1.inventoryManager.equipItem[int.Parse(trueId.Replace("-", ""))].Name+ " Blueprint";
+							}
 							else
 							{
 								Shop.itemInfoDisplay = Game1.smallText.WordWrap(Game1.inventoryManager.equipItem[int.Parse(trueId)].Description, 0.8f, 380f, TextAlign.Left);

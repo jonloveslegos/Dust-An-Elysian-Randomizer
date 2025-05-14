@@ -178,6 +178,9 @@ namespace Dust.Strings
 
 		internal static string RandomizeStartingAbilitiesTitle => Strings_Options.ResourceManager.GetString("RandomizeStartingAbilitiesTitle", Strings_Options.resourceCulture);
 
+		internal static string GenerateSeed => Strings_Options.ResourceManager.GetString("GenerateSeed", Strings_Options.resourceCulture);
+		internal static string GenerateSeedDesc => Strings_Options.ResourceManager.GetString("GenerateSeedDesc", Strings_Options.resourceCulture);
+
 		internal static string RandomizeSkillGems => Strings_Options.ResourceManager.GetString("RandomizeSkillGems", Strings_Options.resourceCulture);
 
 		internal static string RandomizeSkillGemsTitle => Strings_Options.ResourceManager.GetString("RandomizeSkillGemsTitle", Strings_Options.resourceCulture);

@@ -3496,10 +3496,10 @@ namespace Dust.HUD
 
 		private void DrawSettingsPC()
 		{
-			int num = 18;
+			int num = 16;
 			if (Game1.gameMode == Game1.GameModes.MainMenu)
             {
-				num += 3;
+				num += 4;
             }
 			int count = Game1.pcManager.inputKeyList.Count;
 			int num2 = Math.Max(Menu.rightEdge - Menu.leftEdge, 1000);
@@ -3806,7 +3806,7 @@ namespace Dust.HUD
 						Game1.settings.HiQualityPortraits = !Game1.settings.HiQualityPortraits;
 					}
 					break;
-				case 8:
+				case 7:
 					{
 						Game1.smallText.DrawText(pos, Strings_Options.SoundTitle, textSize);
 						int num = this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.SoundTitle, (int)Math.Round(Sound.masterSFXVolume * 100f) / 10 * 10 + " %", Strings_Options.Sound, textSize);
@@ -3817,28 +3817,28 @@ namespace Dust.HUD
 						}
 						break;
 					}
-				case 9:
+				case 8:
 					{
 						Game1.smallText.DrawText(pos, Strings_Options.MusicTitle, textSize);
 						int num = this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.MusicTitle, (int)Math.Round(Sound.masterMusicVolume * 100f) / 10 * 10 + " %", Strings_Options.Music, textSize);
 						Sound.masterMusicVolume = MathHelper.Clamp(Sound.masterMusicVolume + (float)num * 0.1f, 0f, 1f);
 						break;
 					}
-				case 11:
+				case 9:
 					Game1.smallText.DrawText(pos, Strings_Options.ColorBlindTitle, textSize);
 					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.ColorBlindTitle, Game1.settings.ColorBlind ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.ColorBlind, textSize) != 0)
 					{
 						Game1.settings.ColorBlind = !Game1.settings.ColorBlind;
 					}
 					break;
-				case 12:
+				case 10:
 					Game1.smallText.DrawText(pos, Strings_Options.AutoAdvanceTitle, textSize);
 					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.AutoAdvanceTitle, Game1.settings.AutoAdvance ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.AutoAdvance, textSize) != 0)
 					{
 						Game1.settings.AutoAdvance = !Game1.settings.AutoAdvance;
 					}
 					break;
-				case 13:
+				case 11:
 					Game1.smallText.DrawText(pos, Strings_Options.AutoHealTitle, textSize);
 					if (Game1.stats.gameDifficulty > 0)
 					{
@@ -3852,7 +3852,7 @@ namespace Dust.HUD
 						this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.AutoHealTitle, Strings_Options.PCEnabledLocked, Strings_Options.AutoHeal1, textSize);
 					}
 					break;
-				case 14:
+				case 12:
 					Game1.smallText.DrawText(pos, Strings_Options.AutoLevelTitle, textSize);
 					if (Game1.stats.gameDifficulty > 0)
 					{
@@ -3866,7 +3866,7 @@ namespace Dust.HUD
 						this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.AutoLevelTitle, Strings_Options.PCEnabledLocked, Strings_Options.AutoLevel1, textSize);
 					}
 					break;
-				case 15:
+				case 13:
 					if (Game1.gameMode != 0)
 					{
 						Game1.smallText.DrawText(pos, Strings_Options.DifficultyTitle, textSize);
@@ -3897,7 +3897,7 @@ namespace Dust.HUD
 						}
 					}
 					break;
-				case 16:
+				case 14:
 					{
 						Game1.smallText.DrawText(pos, Strings_Options.PCControlsTitle, textSize);
 						int num3 = this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.PCControlsTitle, Strings_Options.ResourceManager.GetString("PCControlsOption" + Game1.settings.InputMethod), Strings_Options.PCControls, textSize);
@@ -3912,14 +3912,14 @@ namespace Dust.HUD
 						}
 						break;
 					}
-				case 17:
+				case 15:
 					Game1.smallText.DrawText(pos, Strings_Options.RumbleTitle, textSize);
 					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RumbleTitle, Game1.settings.Rumble ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.Rumble, textSize) != 0)
 					{
 						Game1.settings.Rumble = !Game1.settings.Rumble;
 					}
 					break;
-				case 18:
+				case 16:
 					Game1.smallText.DrawText(pos, Strings_Options.AutoFireTitle, textSize);
 					if (Game1.stats.gameDifficulty > 0)
 					{
@@ -3933,22 +3933,32 @@ namespace Dust.HUD
 						this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.AutoFireTitle, Strings_Options.PCEnabledLocked, Strings_Options.AutoFire1, textSize);
 					}
 					break;
-				case 20:
+				case 18:
 					Game1.smallText.DrawText(pos, Strings_Options.RandomizeStartingAbilitiesTitle, textSize);
 					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandomizeStartingAbilitiesTitle, Game1.settings.RandomizeStartingAbilities ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.RandomizeStartingAbilities, textSize) != 0)
 					{
 						Game1.settings.RandomizeStartingAbilities = !Game1.settings.RandomizeStartingAbilities;
 					}
 					break;
-				case 21:
+				case 19:
 					Game1.smallText.DrawText(pos, Strings_Options.RandomizeSkillGemsTitle, textSize);
 					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandomizeSkillGemsTitle, Game1.settings.RandomizeSkillGems ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.RandomizeSkillGems, textSize) != 0)
 					{
 						Game1.settings.RandomizeSkillGems = !Game1.settings.RandomizeSkillGems;
 					}
 					break;
-				case 7:
-				case 10:
+				case 20:
+					Game1.smallText.DrawText(pos, Strings_Options.GenerateSeed, textSize);
+					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.GenerateSeed, "?", Strings_Options.GenerateSeedDesc, textSize) != 0)
+					{
+						bool didit = this.MakeSeed();
+						while (!didit)
+						{
+							didit = this.MakeSeed();
+						}
+					}
+					break;
+				case 17:
 					break;
 			}
 		}
@@ -5613,11 +5623,6 @@ namespace Dust.HUD
 
         private void NewGame(ParticleManager pMan, string newPath, int difficulty)
 		{
-			bool didit = this.MakeSeed();
-			while (!didit)
-			{
-				didit = this.MakeSeed();
-			}
 			WeatherAudio.Play(WeatherAudioType.Silent);
 			Game1.stats.ResetGame(pMan, this.character);
 			Game1.stats.gameDifficulty = (Game1.stats.startDifficulty = (byte)difficulty);

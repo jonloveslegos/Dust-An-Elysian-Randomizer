@@ -240,6 +240,10 @@ namespace Dust.HUD
 			{
 				this.equipItem[i] = null;
 			}
+			for (int j = 0; j < Game1.stats.Equipment.Length; j++)
+			{
+				this.AddEquipmentList((EquipType)j, 0);
+			}
 			this.AddEquipmentList(EquipType.FeebleFruit, 80, 0, 20, 0, 0, 0, 1f, 0, 1f, 1f, new MaterialType[0], new byte[0]);
 			this.AddEquipmentList(EquipType.LoutaNut, 160, 0, 40, 0, 0, 0, 1f, 0, 1f, 1f, new MaterialType[0], new byte[0]);
 			this.AddEquipmentList(EquipType.CupCake, 240, 0, 60, 0, 0, 0, 1f, 0, 1f, 1f, new MaterialType[0], new byte[0]);
@@ -641,10 +645,6 @@ namespace Dust.HUD
 			this.AddEquipmentList(EquipType.RedOrb, 6000);
 			this.AddEquipmentList(EquipType.FidgetDoll, 2);
 			this.AddEquipmentList(EquipType.Cooler, 4000);
-			for (int j = 320; j < Game1.stats.Equipment.Length; j++)
-			{
-				this.AddEquipmentList((EquipType)j, 0);
-			}
 		}
 
 		private void AddEquipmentList(EquipType equipType, int _value)
