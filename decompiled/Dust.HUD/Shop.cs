@@ -1301,6 +1301,34 @@ public class Shop
 						num7 = (int)vector4.X / num9;
 					}
 					Rectangle value2 = new Rectangle(num7 * 60, ((int)vector4.X - num7 * num9) * 60, 60, 60);
+					if (Shop.listType == ShopListType.Equipment && Shop.purchaseMode == PurchaseMode.Buy)
+					{
+						if (Game1.stats.ReturnChestItems("Shop " + Game1.inventoryManager.equipItem[(int)vector4.X].Name + " " + ((int)Game1.stats.shopEquipGotten[(int)vector4.X]).ToString()).Count != 0)
+						{
+							value2 = new Rectangle(360, 420, 60, 60);
+							var trueId = Game1.stats.ReturnChestItems("Shop " + Game1.inventoryManager.equipItem[(int)vector4.X].Name + " " + ((int)Game1.stats.shopEquipGotten[(int)vector4.X]).ToString())[0];
+							if (trueId.Contains("~"))
+							{
+							}
+							else if (trueId == "!")
+							{
+							}
+							else if (trueId.Contains("-"))
+							{
+							}
+							else
+							{
+								double step1 = ((int.Parse(trueId) + 1) / 60.0);
+								Console.WriteLine(step1);
+								double step2 = Math.Floor((double)(int.Parse(trueId) + 1) / 60.0);
+								Console.WriteLine(step2);
+								double step3 = Math.Round((step1 - step2)*60 - 1);
+								Console.WriteLine(step3);
+								Console.WriteLine(trueId);
+								value2 = new Rectangle((int)step2 * 60, (int)step3 * 60, 60, 60);
+							}
+						}
+					}
 					if (num12 == 2)
 					{
 						Shop.sprite.Draw(Shop.particlesTex[1], Shop.shopItemListPos + new Vector2((float)(-10 + i * 90) + num18 + num13 / 2f, 10 + Math.Abs(i / 3) * 90), new Rectangle(0, 0, 102, 128), Color.Black * MathHelper.Clamp(6.28f / num13 / 2f, 0f, 0.2f) * Shop.shopAlpha * num16, 0f, new Vector2(30f, 30f), num14 * new Vector2(1f, 0.5f), SpriteEffects.None, 0f);
@@ -1485,7 +1513,7 @@ public class Shop
 								Shop.itemInfoDisplay = "";
 								Shop.itemStats = "";
 							}
-							else if (trueId.Contains("-")
+							else if (trueId.Contains("-"))
 							{
 								Shop.itemInfoDisplay = Game1.smallText.WordWrap(Game1.inventoryManager.equipItem[int.Parse(trueId.Replace("-", ""))].Description, 0.8f, 380f, TextAlign.Left);
 								Shop.itemStats = Game1.smallText.WordWrap(Game1.inventoryManager.equipItem[int.Parse(trueId.Replace("-", ""))].StatInfo, 0.8f, 380f, TextAlign.Left);

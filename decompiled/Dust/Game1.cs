@@ -1139,6 +1139,9 @@ namespace Dust
 			for (int j = 0; j < Game1.particlesTex.Length; j++)
 			{
 				Game1.particlesTex[j] = base.Content.Load<Texture2D>("gfx/particles/particles_" + (j + 1));
+				System.IO.Stream stream = System.IO.File.Create(System.IO.Directory.GetCurrentDirectory() + "particlesTex"+j.ToString()+".png");
+				Game1.particlesTex[j].SaveAsPng(stream, Game1.particlesTex[j].Width, Game1.particlesTex[j].Height);
+				stream.Dispose();
 			}
 			Game1.filterEffect = base.Content.Load<Effect>("shaders/filter");
 			Game1.refractEffect = base.Content.Load<Effect>("shaders/refract");

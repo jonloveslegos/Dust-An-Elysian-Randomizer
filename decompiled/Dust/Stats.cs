@@ -712,11 +712,11 @@ namespace Dust
 		public void AcquireXP(int amount)
 		{
 			amount = Math.Max(amount, 0);
-			this.XP += amount;
-			Game1.hud.InitMiniPrompt(MiniPromptType.XPAcquired, amount, blueprint: false);
+			this.XP += (amount * Game1.settings.ExpMult);
+			Game1.hud.InitMiniPrompt(MiniPromptType.XPAcquired, amount * Game1.settings.ExpMult, blueprint: false);
 			if (Game1.hud.hudDetails)
 			{
-				Game1.pManager.AddXP(Game1.character[0].Location + new Vector2(0f, -100f), amount, bonus: false, 9);
+				Game1.pManager.AddXP(Game1.character[0].Location + new Vector2(0f, -100f), amount * Game1.settings.ExpMult, bonus: false, 9);
 			}
 		}
 
@@ -1494,7 +1494,7 @@ namespace Dust
 		{
 			if (this.comboTimer > 0f)
 			{
-				this.chainXPTally = (int)(((float)this.comboMeter + this.comboEnemies * (float)this.LEVEL) / 4f);
+				this.chainXPTally = (int)(((float)this.comboMeter + this.comboEnemies * (float)this.LEVEL) / 4f) * Game1.settings.ExpMult;
 				if (!Game1.character[0].Holding && !Game1.hud.isPaused && Game1.hud.inventoryState == InventoryState.None)
 				{
 					this.comboTimer -= frameTime;
@@ -1525,7 +1525,7 @@ namespace Dust
 					if (this.comboXP > 0f)
 					{
 						int num = (int)this.comboXP + (int)(((float)this.comboMeter + this.comboEnemies * (float)this.LEVEL) / 4f);
-						this.XP += num;
+						this.XP += num * Game1.settings.ExpMult;
 						this.comboXPTally = (int)this.comboXP;
 						this.Score += num;
 						this.comboXP = 0f;
@@ -1533,7 +1533,7 @@ namespace Dust
 						this.comboDisplayTimer = 8f;
 						if (this.chainXPTally > 0 && Game1.hud.hudDetails)
 						{
-							Game1.pManager.AddXP(Game1.character[0].Location - new Vector2(30f, 130f), this.chainXPTally, bonus: true, 9);
+							Game1.pManager.AddXP(Game1.character[0].Location - new Vector2(30f, 130f), this.chainXPTally * Game1.settings.ExpMult, bonus: true, 9);
 						}
 					}
 					if (this.comboMeter > this.longestChain)

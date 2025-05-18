@@ -358,4 +358,11 @@ Default = (Off).</value>
     <value>Click this to generate a new seed.
 WARNING: The game will be frozen until it finishes.</value>
   </data>
+  <data name="ExpMult" xml:space="preserve">
+    <value>Multiplies experience gain.
+Default = (2x).</value>
+  </data>
+  <data name="ExpMultTitle" xml:space="preserve">
+    <value>Multiply Experience Gain</value>
+  </data>
 </root>

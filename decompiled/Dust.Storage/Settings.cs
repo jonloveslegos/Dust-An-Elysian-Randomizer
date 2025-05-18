@@ -40,6 +40,8 @@ namespace Dust.Storage
 
 		private bool randomizeSkillGems;
 
+		private int expMult;
+
 		private bool[] globalAchievement = new bool[30];
 
 		private int inputMethod;
@@ -197,6 +199,18 @@ namespace Dust.Storage
 			set
 			{
 				this.randomizeSkillGems = value;
+			}
+		}
+
+		public int ExpMult
+		{
+			get
+			{
+				return this.expMult;
+			}
+			set
+			{
+				this.expMult = value;
 			}
 		}
 

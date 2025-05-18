@@ -142,6 +142,8 @@ namespace Dust.HUD
 
 		private static bool RandomizeSkillGems;
 
+		private static int ExpMult;
+
 		private static bool prevAutoLevelUp;
 
 		private static bool prevAutoAdvance;
@@ -2739,6 +2741,7 @@ namespace Dust.HUD
 			Menu.prevColorBlind = Game1.settings.ColorBlind;
 			Menu.randomizeStartingAbilities = Game1.settings.RandomizeStartingAbilities;
 			Menu.RandomizeSkillGems = Game1.settings.RandomizeSkillGems;
+			Menu.ExpMult = Game1.settings.ExpMult;
 			this.prevDifficulty = Game1.stats.gameDifficulty;
 			Menu.prevResolution = new Vector2(Game1.screenWidth, Game1.screenHeight);
 			bool flag = (Game1.settings.FullScreen = Game1.graphics.IsFullScreen);
@@ -2828,6 +2831,9 @@ namespace Dust.HUD
 					break;
 				case 10:
 					text = Strings_Options.RandomizeSkillGems;
+					break;
+				case 11:
+					text = Strings_Options.ExpMult;
 					break;
 			}
 			this.optionDesc = Game1.smallText.WordWrap(text, 0.9f, width, TextAlign.Center);
@@ -3098,6 +3104,22 @@ namespace Dust.HUD
 						Game1.settings.RandomizeSkillGems = true;
 					}
 				}
+				else if (this.curMenuOption == 11)
+				{
+					if (Game1.hud.KeyRight)
+					{
+						if (Game1.settings.ExpMult < 10)
+						{
+							Sound.PlayCue("menu_click");
+							Game1.settings.ExpMult += 1;
+						}
+					}
+					else if (Game1.hud.KeyLeft && Game1.settings.ExpMult > 1)
+					{
+						Sound.PlayCue("menu_click");
+						Game1.settings.ExpMult -= 1;
+					}
+				}
 				else if (this.curMenuOption == 8)
 				{
 					if (Game1.stats.playerLifeState == 0)
@@ -3255,6 +3277,7 @@ namespace Dust.HUD
 			Game1.settings.ColorBlind = Menu.prevColorBlind;
 			Game1.settings.RandomizeStartingAbilities = Menu.randomizeStartingAbilities;
 			Game1.settings.RandomizeSkillGems = Menu.RandomizeSkillGems;
+			Game1.settings.ExpMult = Menu.ExpMult;
 			Game1.stats.gameDifficulty = this.prevDifficulty;
 			Game1.SetResolution((int)Menu.prevResolution.X, (int)Menu.prevResolution.Y);
 			if (Menu.prevFullScreen != Game1.graphics.IsFullScreen)
@@ -3467,6 +3490,17 @@ namespace Dust.HUD
 						Game1.bigText.DrawText(pos + new Vector2(140f, 0f), Strings_Options.Off, size, 600f, TextAlign.Left);
 						break;
 					}
+				case 11:
+					{
+						Game1.bigText.DrawText(pos, Strings_Options.ExpMultTitle, size, 600f, TextAlign.Right);
+						float num = 1f;
+						float num2 = 0.25f;
+						Game1.bigText.Color = new Color(1f, 1f, 1f, num * alpha);
+						Game1.bigText.DrawText(pos + new Vector2(100f, 0f), Strings_Options.On, size, 600f, TextAlign.Right);
+						Game1.bigText.Color = new Color(1f, 1f, 1f, num2 * alpha);
+						Game1.bigText.DrawText(pos + new Vector2(140f, 0f), Strings_Options.Off, size, 600f, TextAlign.Left);
+						break;
+					}
 				case 8:
 					Game1.bigText.DrawText(pos, Strings_Options.DifficultyTitle, size, 600f, TextAlign.Right);
 					Game1.bigText.Color = new Color(1f, 1f, 1f, alpha);
@@ -3499,7 +3533,7 @@ namespace Dust.HUD
 			int num = 16;
 			if (Game1.gameMode == Game1.GameModes.MainMenu)
             {
-				num += 4;
+				num += 5;
             }
 			int count = Game1.pcManager.inputKeyList.Count;
 			int num2 = Math.Max(Menu.rightEdge - Menu.leftEdge, 1000);
@@ -3948,6 +3982,19 @@ namespace Dust.HUD
 					}
 					break;
 				case 20:
+					Game1.smallText.DrawText(pos, Strings_Options.ExpMultTitle, textSize);
+					int num303 = this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.ExpMultTitle, Game1.settings.ExpMult.ToString(), Strings_Options.ExpMult, textSize);
+					Game1.settings.ExpMult += num303;
+					if (Game1.settings.ExpMult < 1)
+					{
+						Game1.settings.ExpMult = 1;
+					}
+					else if (Game1.settings.ExpMult > 10)
+					{
+						Game1.settings.ExpMult = 10;
+					}
+					break;
+				case 21:
 					Game1.smallText.DrawText(pos, Strings_Options.GenerateSeed, textSize);
 					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.GenerateSeed, "?", Strings_Options.GenerateSeedDesc, textSize) != 0)
 					{

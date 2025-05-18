@@ -184,6 +184,8 @@ namespace Dust.Strings
 		internal static string RandomizeSkillGems => Strings_Options.ResourceManager.GetString("RandomizeSkillGems", Strings_Options.resourceCulture);
 
 		internal static string RandomizeSkillGemsTitle => Strings_Options.ResourceManager.GetString("RandomizeSkillGemsTitle", Strings_Options.resourceCulture);
+		internal static string ExpMult => Strings_Options.ResourceManager.GetString("ExpMult", Strings_Options.resourceCulture);
+		internal static string ExpMultTitle => Strings_Options.ResourceManager.GetString("ExpMultTitle", Strings_Options.resourceCulture);
 
 		internal Strings_Options()
 		{

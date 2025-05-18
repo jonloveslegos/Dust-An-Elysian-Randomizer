@@ -4215,45 +4215,45 @@ namespace Dust.HUD
 				int invSelMax = Game1.inventoryManager.invSelMax;
 				switch (j)
 				{
-				case 0:
-					if (Game1.stats.currentItem > -1 && Game1.stats.Equipment[Game1.stats.currentItem] > 0)
-					{
-						value = new Rectangle(0, Game1.stats.currentItem * 60, 60, 60);
-					}
-					break;
-				case 1:
-					if (Game1.stats.currentArmor > -1 && Game1.stats.Equipment[Game1.stats.currentArmor] > 0)
-					{
-						value = new Rectangle(180, (Game1.stats.currentArmor - invSelMax * 3) * 60, 60, 60);
-					}
-					break;
-				case 2:
-					if (Game1.stats.currentAugment > -1 && Game1.stats.Equipment[Game1.stats.currentAugment] > 0)
-					{
-						value = new Rectangle(120, (Game1.stats.currentAugment - invSelMax * 2) * 60, 60, 60);
-					}
-					break;
-				case 3:
-					value = new Rectangle(360, 420, 60, 60);
-					break;
-				case 4:
-					if (Game1.stats.currentRingLeft > -1 && Game1.stats.Equipment[Game1.stats.currentRingLeft] > 0)
-					{
-						value = new Rectangle(240, (Game1.stats.currentRingLeft - invSelMax * 4) * 60, 60, 60);
-					}
-					break;
-				case 5:
-					if (Game1.stats.currentPendant > -1 && Game1.stats.Equipment[Game1.stats.currentPendant] > 0)
-					{
-						value = new Rectangle(60, (Game1.stats.currentPendant - invSelMax) * 60, 60, 60);
-					}
-					break;
-				case 6:
-					if (Game1.stats.currentRingRight > -1 && Game1.stats.Equipment[Game1.stats.currentRingRight] > 0)
-					{
-						value = new Rectangle(240, (Game1.stats.currentRingRight - invSelMax * 4) * 60, 60, 60);
-					}
-					break;
+					case 0:
+						if (Game1.stats.currentItem > -1 && Game1.stats.Equipment[Game1.stats.currentItem] > 0)
+						{
+							value = new Rectangle(0, Game1.stats.currentItem * 60, 60, 60);
+						}
+						break;
+					case 1:
+						if (Game1.stats.currentArmor > -1 && Game1.stats.Equipment[Game1.stats.currentArmor] > 0)
+						{
+							value = new Rectangle(180, (Game1.stats.currentArmor - invSelMax * 3) * 60, 60, 60);
+						}
+						break;
+					case 2:
+						if (Game1.stats.currentAugment > -1 && Game1.stats.Equipment[Game1.stats.currentAugment] > 0)
+						{
+							value = new Rectangle(120, (Game1.stats.currentAugment - invSelMax * 2) * 60, 60, 60);
+						}
+						break;
+					case 3:
+						value = new Rectangle(360, 420, 60, 60);
+						break;
+					case 4:
+						if (Game1.stats.currentRingLeft > -1 && Game1.stats.Equipment[Game1.stats.currentRingLeft] > 0)
+						{
+							value = new Rectangle(240, (Game1.stats.currentRingLeft - invSelMax * 4) * 60, 60, 60);
+						}
+						break;
+					case 5:
+						if (Game1.stats.currentPendant > -1 && Game1.stats.Equipment[Game1.stats.currentPendant] > 0)
+						{
+							value = new Rectangle(60, (Game1.stats.currentPendant - invSelMax) * 60, 60, 60);
+						}
+						break;
+					case 6:
+						if (Game1.stats.currentRingRight > -1 && Game1.stats.Equipment[Game1.stats.currentRingRight] > 0)
+						{
+							value = new Rectangle(240, (Game1.stats.currentRingRight - invSelMax * 4) * 60, 60, 60);
+						}
+						break;
 				}
 				float num5 = 0f;
 				float num6 = 1f;
