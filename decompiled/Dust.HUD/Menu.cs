@@ -15,6 +15,9 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Archipelago.MultiClient.Net;
+using Archipelago.MultiClient.Net.Exceptions;
+using Archipelago.MultiClient.Net.Enums;
 
 namespace Dust.HUD
 {
@@ -143,6 +146,8 @@ namespace Dust.HUD
 		private static bool RandomizeSkillGems;
 
 		private static int ExpMult;
+
+		private static bool RandoMode;
 
 		private static bool prevAutoLevelUp;
 
@@ -2742,6 +2747,7 @@ namespace Dust.HUD
 			Menu.randomizeStartingAbilities = Game1.settings.RandomizeStartingAbilities;
 			Menu.RandomizeSkillGems = Game1.settings.RandomizeSkillGems;
 			Menu.ExpMult = Game1.settings.ExpMult;
+			Menu.RandoMode = Game1.settings.RandoMode;
 			this.prevDifficulty = Game1.stats.gameDifficulty;
 			Menu.prevResolution = new Vector2(Game1.screenWidth, Game1.screenHeight);
 			bool flag = (Game1.settings.FullScreen = Game1.graphics.IsFullScreen);
@@ -3278,6 +3284,7 @@ namespace Dust.HUD
 			Game1.settings.RandomizeStartingAbilities = Menu.randomizeStartingAbilities;
 			Game1.settings.RandomizeSkillGems = Menu.RandomizeSkillGems;
 			Game1.settings.ExpMult = Menu.ExpMult;
+			Game1.settings.RandoMode = Menu.RandoMode;
 			Game1.stats.gameDifficulty = this.prevDifficulty;
 			Game1.SetResolution((int)Menu.prevResolution.X, (int)Menu.prevResolution.Y);
 			if (Menu.prevFullScreen != Game1.graphics.IsFullScreen)
@@ -3531,10 +3538,14 @@ namespace Dust.HUD
 		private void DrawSettingsPC()
 		{
 			int num = 16;
-			if (Game1.gameMode == Game1.GameModes.MainMenu)
+			if (Game1.gameMode == Game1.GameModes.MainMenu && !Game1.settings.RandoMode)
             {
 				num += 5;
             }
+            else if (Game1.gameMode == Game1.GameModes.MainMenu)
+			{
+				num += 2;
+			}
 			int count = Game1.pcManager.inputKeyList.Count;
 			int num2 = Math.Max(Menu.rightEdge - Menu.leftEdge, 1000);
 			if (this.configuringControls > 0)
@@ -3968,10 +3979,23 @@ namespace Dust.HUD
 					}
 					break;
 				case 18:
-					Game1.smallText.DrawText(pos, Strings_Options.RandomizeStartingAbilitiesTitle, textSize);
-					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandomizeStartingAbilitiesTitle, Game1.settings.RandomizeStartingAbilities ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.RandomizeStartingAbilities, textSize) != 0)
+					if (Game1.settings.RandoMode)
 					{
-						Game1.settings.RandomizeStartingAbilities = !Game1.settings.RandomizeStartingAbilities;
+						Game1.smallText.DrawText(pos, "Setup Archipelago", textSize);
+						if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandomizeStartingAbilitiesTitle, Game1.settings.RandomizeStartingAbilities ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.RandomizeStartingAbilities, textSize) != 0)
+						{
+							var lines_ap = System.IO.File.ReadAllLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\archipelago_data.txt");
+							Game1.connected_server = ArchipelagoSessionFactory.CreateSession(lines_ap[0].Replace("IP=", "")+":"+ lines_ap[1].Replace("PORT=", ""));
+							Menu.Connect(lines_ap[0].Replace("IP=", "") + ":" + lines_ap[1].Replace("PORT=", ""), lines_ap[2].Replace("SLOT=", ""), lines_ap[2].Replace("PASSWORD=", ""));
+						}
+					}
+					else
+					{
+						Game1.smallText.DrawText(pos, Strings_Options.RandomizeStartingAbilitiesTitle, textSize);
+						if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandomizeStartingAbilitiesTitle, Game1.settings.RandomizeStartingAbilities ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.RandomizeStartingAbilities, textSize) != 0)
+						{
+							Game1.settings.RandomizeStartingAbilities = !Game1.settings.RandomizeStartingAbilities;
+						}
 					}
 					break;
 				case 19:
@@ -3994,6 +4018,13 @@ namespace Dust.HUD
 						Game1.settings.ExpMult = 10;
 					}
 					break;
+				case 17:
+					Game1.smallText.DrawText(pos, Strings_Options.RandoModeTitle, textSize);
+					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandoModeTitle, Game1.settings.RandoMode ? Strings_Options.RandoModeStandalone : Strings_Options.RandoModeArchipelago, Strings_Options.RandoMode, textSize) != 0)
+					{
+						Game1.settings.RandoMode = !Game1.settings.RandoMode;
+					}
+					break;
 				case 21:
 					Game1.smallText.DrawText(pos, Strings_Options.GenerateSeed, textSize);
 					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.GenerateSeed, "?", Strings_Options.GenerateSeedDesc, textSize) != 0)
@@ -4005,9 +4036,42 @@ namespace Dust.HUD
 						}
 					}
 					break;
-				case 17:
-					break;
 			}
+		}
+		private static void Connect(string server, string user, string pass)
+		{
+			LoginResult result;
+
+			try
+			{
+				// handle TryConnectAndLogin attempt here and save the returned object to `result`
+				result = Game1.connected_server.TryConnectAndLogin("Dust: AET", user, ItemsHandlingFlags.AllItems);
+			}
+			catch (Exception e)
+			{
+				result = new LoginFailure(e.GetBaseException().Message);
+			}
+
+			if (!result.Successful)
+			{
+				LoginFailure failure = (LoginFailure)result;
+				string errorMessage = $"Failed to Connect to {server} as {user}:";
+				foreach (string error in failure.Errors)
+				{
+					errorMessage += $"\n    {error}";
+				}
+				foreach (ConnectionRefusedError error in failure.ErrorCodes)
+				{
+					errorMessage += $"\n    {error}";
+				}
+
+				return; // Did not connect, show the user the contents of `errorMessage`
+			}
+
+			// Successfully connected, `ArchipelagoSession` (assume statically defined as `session` from now on) can now be
+			// used to interact with the server and the returned `LoginSuccessful` contains some useful information about the
+			// initial connection (e.g. a copy of the slot data as `loginSuccess.SlotData`)
+			var loginSuccess = (LoginSuccessful)result;
 		}
 
 		private int DrawToggleCursors(Vector2 pos, float toggleOffset, int selectionID, string selectionTitle, string selectionOption, string selectionDesc, float textSize)

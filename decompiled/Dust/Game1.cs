@@ -140,6 +140,8 @@ namespace Dust
 
 		private static ContentManager MapContent1;
 
+		public static Archipelago.MultiClient.Net.ArchipelagoSession connected_server;
+
 		private static ContentManager MapContent2;
 
 		private static ContentManager MapContent3;

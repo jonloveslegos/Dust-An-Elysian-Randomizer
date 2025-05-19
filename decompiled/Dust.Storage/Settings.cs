@@ -39,6 +39,8 @@ namespace Dust.Storage
 		private bool randomizeStartingAbilities;
 
 		private bool randomizeSkillGems;
+		
+		private bool randoMode;
 
 		private int expMult;
 
@@ -55,6 +57,18 @@ namespace Dust.Storage
 			set
 			{
 				this.rumble = value;
+			}
+		}
+
+		public bool RandoMode
+		{
+			get
+			{
+				return this.randoMode;
+			}
+			set
+			{
+				this.randoMode = value;
 			}
 		}
 
@@ -340,7 +354,10 @@ namespace Dust.Storage
 			}
 			writer.Write(this.InputMethod);
 			writer.Write(this.randomizeStartingAbilities);
-			Game1.pcManager.WriteMapping(writer);
+			writer.Write(this.randomizeSkillGems);
+			writer.Write(this.randoMode);
+			writer.Write(this.expMult);
+		Game1.pcManager.WriteMapping(writer);
 		}
 
 		public void Read(BinaryReader reader)
@@ -383,6 +400,9 @@ namespace Dust.Storage
 			this.SyncAchievements();
 			int num2 = (int)(Game1.pcManager.inputDevice = (InputDevice)(this.InputMethod = reader.ReadInt32()));
 			this.RandomizeStartingAbilities = reader.ReadBoolean();
+			this.randomizeSkillGems = reader.ReadBoolean();
+			this.randoMode = reader.ReadBoolean();
+			this.expMult = reader.ReadInt32();
 			Game1.pcManager.ReadMapping(reader);
 		}
 

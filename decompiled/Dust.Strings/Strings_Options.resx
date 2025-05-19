@@ -365,4 +365,17 @@ Default = (2x).</value>
   <data name="ExpMultTitle" xml:space="preserve">
     <value>Multiply Experience Gain</value>
   </data>
+  <data name="RandoMode" xml:space="preserve">
+    <value>Which randomizer application do you want to use?
+Default = (Standalone).</value>
+  </data>
+  <data name="RandoModeArchipelago" xml:space="preserve">
+    <value>Archipelago</value>
+  </data>
+  <data name="RandoModeStandalone" xml:space="preserve">
+    <value>Built-In</value>
+  </data>
+  <data name="RandoModeTitle" xml:space="preserve">
+    <value>Randomizer Mode</value>
+  </data>
 </root>

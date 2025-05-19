@@ -186,6 +186,10 @@ namespace Dust.Strings
 		internal static string RandomizeSkillGemsTitle => Strings_Options.ResourceManager.GetString("RandomizeSkillGemsTitle", Strings_Options.resourceCulture);
 		internal static string ExpMult => Strings_Options.ResourceManager.GetString("ExpMult", Strings_Options.resourceCulture);
 		internal static string ExpMultTitle => Strings_Options.ResourceManager.GetString("ExpMultTitle", Strings_Options.resourceCulture);
+		internal static string RandoMode => Strings_Options.ResourceManager.GetString("RandoMode", Strings_Options.resourceCulture);
+		internal static string RandoModeTitle => Strings_Options.ResourceManager.GetString("RandoModeTitle", Strings_Options.resourceCulture);
+		internal static string RandoModeArchipelago => Strings_Options.ResourceManager.GetString("RandoModeArchipelago", Strings_Options.resourceCulture);
+		internal static string RandoModeStandalone => Strings_Options.ResourceManager.GetString("RandoModeStandalone", Strings_Options.resourceCulture);
 
 		internal Strings_Options()
 		{
