@@ -3544,7 +3544,7 @@ namespace Dust.HUD
             }
             else if (Game1.gameMode == Game1.GameModes.MainMenu)
 			{
-				num += 2;
+				num += 1;
 			}
 			int count = Game1.pcManager.inputKeyList.Count;
 			int num2 = Math.Max(Menu.rightEdge - Menu.leftEdge, 1000);
@@ -3982,11 +3982,9 @@ namespace Dust.HUD
 					if (Game1.settings.RandoMode)
 					{
 						Game1.smallText.DrawText(pos, "Setup Archipelago", textSize);
-						if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandomizeStartingAbilitiesTitle, Game1.settings.RandomizeStartingAbilities ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.RandomizeStartingAbilities, textSize) != 0)
+						if (this.DrawToggleCursors(pos, toggleOffset, id, "Setup Archipelago", "Connect", "Connects to the specified Archipelago server and slot from the archipelago_data text file in the data folder.", textSize) != 0)
 						{
-							var lines_ap = System.IO.File.ReadAllLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\archipelago_data.txt");
-							Game1.connected_server = ArchipelagoSessionFactory.CreateSession(lines_ap[0].Replace("IP=", "")+":"+ lines_ap[1].Replace("PORT=", ""));
-							Menu.Connect(lines_ap[0].Replace("IP=", "") + ":" + lines_ap[1].Replace("PORT=", ""), lines_ap[2].Replace("SLOT=", ""), lines_ap[2].Replace("PASSWORD=", ""));
+							
 						}
 					}
 					else
@@ -4020,7 +4018,7 @@ namespace Dust.HUD
 					break;
 				case 17:
 					Game1.smallText.DrawText(pos, Strings_Options.RandoModeTitle, textSize);
-					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandoModeTitle, Game1.settings.RandoMode ? Strings_Options.RandoModeStandalone : Strings_Options.RandoModeArchipelago, Strings_Options.RandoMode, textSize) != 0)
+					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandoModeTitle, Game1.settings.RandoMode ? Strings_Options.RandoModeArchipelago : Strings_Options.RandoModeStandalone, Strings_Options.RandoMode, textSize) != 0)
 					{
 						Game1.settings.RandoMode = !Game1.settings.RandoMode;
 					}
@@ -4045,7 +4043,7 @@ namespace Dust.HUD
 			try
 			{
 				// handle TryConnectAndLogin attempt here and save the returned object to `result`
-				result = Game1.connected_server.TryConnectAndLogin("Dust: AET", user, ItemsHandlingFlags.AllItems);
+				result = Game1.connected_server.TryConnectAndLogin("DustAET", user, ItemsHandlingFlags.AllItems);
 			}
 			catch (Exception e)
 			{
@@ -5745,6 +5743,10 @@ namespace Dust.HUD
 			Game1.worldScale = 0.75f;
 			Game1.events.fadeLength = (Game1.events.fadeTimer = 10000f);
 			Sound.DimSFXVolume(0f);
+			if (Game1.settings.RandoMode)
+			{
+				ConnectAP();
+			}
 			Game1.stats.GetChestFromFile("Starting Ability 1", pMan);
 			Game1.stats.GetChestFromFile("Starting Ability 2", pMan);
 			Game1.stats.GetChestFromFile("Starting Ability 3", pMan);
@@ -5768,6 +5770,28 @@ namespace Dust.HUD
 			this.SkipToStartPage();
 			pMan.Reset(removeWeather: true, removeBombs: true);
 			this.LoadMenuTextures();
+
+			if (Game1.settings.RandoMode)
+			{
+				Game1.connected_server.Socket.DisconnectAsync();
+			}
+		}
+		private void ConnectAP()
+        {
+			var lines_ap = System.IO.File.ReadAllLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\archipelago_data.txt");
+			Game1.connected_server = ArchipelagoSessionFactory.CreateSession(lines_ap[0].Replace("IP=", ""), int.Parse(lines_ap[1].Replace("PORT=", "")));
+			Game1.connected_server.Items.ItemReceived += (receivedItemsHelper) =>
+			{
+				var itemReceivedName = $"Item: {receivedItemsHelper.PeekItem().ItemDisplayName}";
+
+				if (!Game1.stats.receivedLocation.Contains(receivedItemsHelper.PeekItem().ToSerializable().ToJson()))
+				{
+					Game1.stats.EarnAPItem(int.Parse(receivedItemsHelper.PeekItem().ItemId.ToString()), Game1.pManager);
+					Game1.stats.receivedLocation.Add(receivedItemsHelper.PeekItem().ToSerializable().ToJson());
+				}
+				receivedItemsHelper.DequeueItem();
+			};
+			Menu.Connect(lines_ap[0].Replace("IP=", "") + ":" + lines_ap[1].Replace("PORT=", ""), lines_ap[2].Replace("SLOT=", ""), lines_ap[2].Replace("PASSWORD=", ""));
 		}
 
 		private void LoadFile()
@@ -5779,6 +5803,10 @@ namespace Dust.HUD
 			Game1.stats.saveSlot = this.tempSaveSlot;
 			Game1.hud.LoadGame();
 			Game1.hud.KeySelect = false;
+			if (Game1.settings.RandoMode)
+			{
+				ConnectAP();
+			}
 		}
 
 		private void DeleteFile()

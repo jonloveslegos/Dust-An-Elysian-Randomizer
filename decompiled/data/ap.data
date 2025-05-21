@@ -1,0 +1,562 @@
+Starting Ability 1|Starting Ability 1
+Starting Ability 2|Starting Ability 2
+Starting Ability 3|Starting Ability 3
+Ability 0|Ability 0
+Ability 1|Ability 1
+Ability 2|Ability 2
+Ability 10|Ability 10
+Ability 12|Ability 12
+Ability 14|Ability 14
+Ability 15|Ability 15
+Ability 16|Ability 16
+Ability 17|Ability 16
+Blue Resonance Gem|Blue Resonance Gem
+Red Resonance Gem|Red Resonance Gem
+Green Resonance Gem|Green Resonance Gem
+Yellow Resonance Gem|Yellow Resonance Gem
+White Resonance Gem|White Resonance Gem
+Rainbow Resonance Gem|Equip cave12 RainbowKey 1
+Challenge 1 Giant Augment|challenge00 0equip
+Challenge 2 Key 1|challenge01 0key
+Challenge 2 Wetsuit|challenge01b 0equip
+Challenge 3 Spectral Vest|challenge02 0equip
+Challenge 4 Warrior Pendant|challenge03 0equip
+Challenge 5 Ring|challenge04 0equip
+Challenge 6 Chest 1 Item 1|challenge05 0
+Challenge 6 Scrap Augment|challenge05 0equip
+Glade Key 1|intro01 0key
+Glade Key 2|intro05 0key
+Glade Key 3|intro06 0key
+Glade Key 4|intro06 1key
+Glade Key 5|intro07 0key
+Glade Key 6|intro07b 0key
+Glade Key 7|intro07b 1key
+Glade Key 8|intro08c 0key
+Glade Key 9|intro08c 1key
+Glade Chest 1 Item 1|intro01b 0
+Glade Chest 1 Item 2|intro01b 0
+Glade Chest 1 Item 3|intro01b 0
+Glade Chest 2 Item 1|intro05 0
+Glade Chest 2 Item 2|intro05 0
+Glade Chest 2 Item 3|intro05 0
+Glade Chest 3 Item 1|intro07b 0
+Glade Chest 3 Item 2|intro07b 0
+Glade Chest 3 Item 3|intro07b 0
+Glade Chest 4 Item 1|intro02b 0
+Glade Chest 4 Item 2|intro02b 0
+Glade Chest 4 Item 3|intro02b 0
+Glade Wall 1|intro01b 0wall
+Glade Wall 2|intro01b 1wall
+Glade Wall 3|intro05 0wall
+Glade Wall 4|intro06 0wall
+Glade Wall 5|intro06 1wall
+Glade Wall 6|intro02b 0wall
+Glade Wall 7|intro07b 0wall
+Glade Wall 8|intro07b 1wall
+Glade Wall 9|intro08 0wall
+Glade Wall 10|intro08 1wall
+Glade Wall 11|intro08b 0wall
+Glade Wall 12|intro08b 1wall
+Glade Wall 13|intro02b 1wall
+Glade Wall 14|intro08c 0wall
+Glade Wall 15|intro08c 1wall
+Glade Fidget Feeble Fruit Gift 1|Equip intro02 0 5
+Glade Fidget Feeble Fruit Gift 2|Equip intro02 0 5
+Glade Fidget Feeble Fruit Gift 3|Equip intro02 0 5
+Glade Fidget Feeble Fruit Gift 4|Equip intro02 0 5
+Glade Fidget Feeble Fruit Gift 5|Equip intro02 0 5
+Glade Shopkeeper Blueprint Gift|Blueprint intro07b 190 1
+Sanctuary Standing Item|sanc02 0equip
+Village Key 1|village05 0key
+Village Key 2|village05 1key
+Village Wall 1|village05 0wall
+Village Chest 1 Item 1|village02 0
+Village Chest 1 Item 2|village02 0
+Village Chest 1 Item 3|village02 0
+Village Chest 1 Item 4|village02 0
+Village Chest 1 Item 5|village02 0
+Village Chest 2 Item 1|village03 0
+Village Chest 2 Item 2|village03 0
+Village Chest 2 Item 3|village03 0
+Village Fidget Doll 1|Equip village03 307 2
+Village Fidget Doll 2|Equip village03 307 2
+Village Hotdog 1|Equip village03 16 3
+Village Hotdog 2|Equip village03 16 3
+Village Hotdog 3|Equip village03 16 3
+Village Birthday Cake 1|Equip village02alt0 BirthdayCake 2
+Village Birthday Cake 2|Equip village02alt0 BirthdayCake 2
+Village Revival Stone 1|Equip village02alt0 301 2
+Village Revival Stone 2|Equip village02alt0 301 2
+Village NPC Blueprint Gift|Blueprint village01 128 1
+Village Key Gift 1|Equip village01 TreasureKey 3
+Village Key Gift 2|Equip village01 TreasureKey 3
+Village Key Gift 3|Equip village01 TreasureKey 3
+Ivydale Key 1|ivy01 0key
+Ivydale Key 2|ivy01 1key
+Ivydale Wall 1|ivy01 0wall
+Ivydale Wall 2|ivy01 1wall
+Ivydale Wall 3|ivy02 0wall
+Ivydale Laundry|ivy02 0equip
+Smith Chest 1 Item 1|smith03 0
+Smith Chest 2 Item 1|smith03b 2
+Smith Chest 3 Item 1|smith03b 0
+Smith Chest 4 Item 1|smith03b 1
+Smith Key 1|smith00 0key
+Smith Key 3|smith04b 0key
+Smith Key 4|smith04b 1key
+Smith Key 2|smith04 0key
+Smith Key 7|smith05 0key
+Smith Key 6|smith05 1key
+Smith Key 8|smith05 2key
+Smith Key 5|smith06 0key
+Smith Wall 1|smith00 0wall
+Smith Wall 2|smith04 0wall
+Smith Wall 3|smith04 1wall
+Smith Wall 4|smith04 2wall
+Forest Chest 4 Item 1|forest09b 0
+Forest Chest 4 Item 2|forest09b 0
+Forest Chest 3 Item 1|forest08 0
+Forest Chest 3 Item 2|forest08 0
+Forest Chest 3 Item 3|forest08 0
+Forest Chest 3 Item 4|forest08 0
+Forest Chest 3 Item 5|forest08 0
+Forest Chest 3 Item 6|forest08 0
+Forest Chest 2 Item 1|forest04c 0
+Forest Chest 2 Item 2|forest04c 0
+Forest Chest 1 Item 1|forest02 0
+Forest Chest 1 Item 2|forest02 0
+Forest Chest 1 Item 3|forest02 0
+Forest Chest 1 Item 4|forest02 0
+Forest Chest 1 Item 5|forest02 0
+Forest Chest 1 Item 6|forest02 0
+Forest Chest 1 Item 7|forest02 0
+Forest Chest 1 Item 8|forest02 0
+Forest Chest 1 Item 9|forest02 0
+Forest Chest 1 Item 10|forest02 0
+Forest Chest 1 Item 11|forest02 0
+Forest Key 1|forest03 0key
+Forest Key 2|forest07 0key
+Forest Key 3|forest08 0key
+Forest Key 4|forest08 1key
+Forest Key 5|forest09 0key
+Forest Key 6|forest11 0key
+Forest Wall 1|forest07 0wall
+Forest Wall 2|forest08c 0wall
+Forest Wall 3|forest09 0wall
+Forest Wall 4|forest09 1wall
+Forest Haley Device|forest07 0equip
+Poisioned Event Item 1|SideEvent 8 3 2
+Poisioned Event Item 2|SideEvent 8 3 2
+Cove Key 1|cove01b 0key
+Cove Key 2|cove01b 1key
+Cove Wall 1|cove01 0wall
+Cove Teleport Stone|cove02 0equip
+Cove Chest 1 Item 1|cove01 0
+Cove Chest 1 Item 2|cove01 0
+Cove Chest 1 Item 3|cove01 0
+Cove Chest 1 Item 4|cove01 0
+Farm Chest 1 Item 1|farm01 0
+Farm Chest 1 Item 2|farm01 0
+Farm Chest 1 Item 3|farm01 0
+Farm Chest 1 Item 4|farm01 0
+Farm Wall 1|farm01 0wall
+Farm Wall 2|farm01 1wall
+Farm Wall 3|farm01 2wall
+Farm Wall 4|farm01 3wall
+Farm Wall 5|farm01 4wall
+Farm Wall 6|farm02 0wall
+Farm Watch|farm02 0equip
+Cave Wall 1|cave02b 0wall
+Cave Wall 2|cave02b 1wall
+Cave Key 1|cave02 0key
+Cave Key 2|cave02b 0key
+Cave Key 3|cave02b 1key
+Cave Key 4|cave02b 2key
+Cave Key 5|cave05b 0key
+Cave Key 6|cave05b 1key
+Cave Key 7|cave05b 2key
+Cave Key 8|cave08 0key
+Cave Key 9|cave12 0key
+Cave Key 10|cave12b 0key
+Cave Key 11|cave12b 1key
+Cave Key 12|cave12b 2key
+Cave Key 13|cave13 0key
+Cave Key 14|cave19 0key
+Cave Key 15|cave21 0key
+Cave Key 16|cave21 1key
+Cave Key 17|cave23 0key
+Cave Key 18|cave27 0key
+Cave Wall 4|cave12 0wall
+Cave Wall 5|cave12 1wall
+Cave Wall 6|cave13 0wall
+Cave Wall 7|cave15 0wall
+Cave Wall 9|cave27 0wall
+Cave Wall 8|cave19 0wall
+Cave Chest 2 Item 1|cave04 0
+Cave Chest 9 Item 1|cave27 0
+Cave Chest 8 Item 1|cave24 0
+Cave Chest 8 Item 2|cave24 0
+Cave Chest 8 Item 3|cave24 0
+Cave Chest 8 Item 4|cave24 0
+Cave Chest 8 Item 5|cave24 0
+Cave Chest 8 Item 6|cave24 0
+Cave Chest 7 Item 1|cave22 0
+Cave Chest 6 Item 1|cave19b 0
+Cave Chest 5 Item 1|cave17 0
+Cave Chest 5 Item 2|cave17 0
+Cave Chest 5 Item 3|cave17 0
+Cave Chest 5 Item 4|cave17 0
+Cave Chest 5 Item 5|cave17 0
+Cave Chest 5 Item 6|cave17 0
+Cave Chest 5 Item 7|cave17 0
+Cave Chest 4 Item 1|cave05b 0
+Cave Chest 4 Item 2|cave05b 0
+Cave Chest 4 Item 3|cave05b 0
+Cave Chest 3 Item 1|cave04 1
+Cave Chest 3 Item 2|cave04 1
+Cave Chest 3 Item 3|cave04 1
+Cave Chest 3 Item 4|cave04 1
+Cave Chest 1 Item 1|cave02 0
+Cave Chest 1 Item 2|cave02 0
+Cave Chest 1 Item 3|cave02 0
+Cave Chest 1 Item 4|cave02 0
+Cave Wall 3|cave05b 0wall
+Cave Light Ring|Equip cave12 249 1
+Cave Doenjang 1|Equip cave12 Doenjang 3
+Cave Doenjang 2|Equip cave12 Doenjang 3
+Cave Doenjang 3|Equip cave12 Doenjang 3
+Cave Reed's Box|Equip cave12 ReedBox 1
+Cave Sheep 1|Equip cave08 0 GappySheep 1
+Cave Sheep 2|Equip cave12 0 GappySheep 1
+Cave Sheep 3|Equip cave12 1 GappySheep 1
+Cave Sheep 4|Equip cave13 0 GappySheep 1
+Cave Sheep 5|Equip cave15 0 GappySheep 1
+Cave Sheep 6|Equip cave21 0 GappySheep 1
+Cave Red Moss 1|cave24 0equip
+Cave Red Moss 2|cave24 1equip
+Cave Red Moss 3|cave24 2equip
+Cave Stick|cave14 0equip
+Cave Red Orb|cave15 1equip
+Meadow Key 1|grave03 0key
+Meadow Key 2|grave04 0key
+Meadow Key 3|grave04 1key
+Meadow Key 4|grave04 2key
+Meadow Key 5|grave07 0key
+Meadow Key 6|grave07 1key
+Meadow Key 7|grave11 0key
+Meadow Key 8|grave20 0key
+Meadow Key 9|grave21 0key
+Meadow Key 10|grave21 1key
+Meadow Key 11|grave21 2key
+Meadow Key 12|grave23 0key
+Meadow Key 13|grave24 0key
+Meadow Key 14|grave24 1key
+Meadow Key 15|grave13 0key
+Meadow Key 16|grave13b 0key
+Meadow Key 17|grave13b 1key
+Meadow Key 18|grave13b 2key
+Meadow Key 19|grave22 0key
+Meadow Key 20|grave22 1key
+Meadow Key 21|grave22 2key
+Meadow Chest 11 Item 1|grave24 0
+Meadow Chest 11 Item 2|grave24 0
+Meadow Chest 11 Item 3|grave24 0
+Meadow Chest 11 Item 4|grave24 0
+Meadow Chest 11 Item 5|grave24 0
+Meadow Chest 11 Item 6|grave24 0
+Meadow Chest 10 Item 1|grave22 0
+Meadow Chest 10 Item 2|grave22 0
+Meadow Chest 10 Item 3|grave22 0
+Meadow Chest 10 Item 4|grave22 0
+Meadow Chest 10 Item 5|grave22 0
+Meadow Chest 10 Item 6|grave22 0
+Meadow Chest 9 Item 1|grave14 0
+Meadow Chest 9 Item 2|grave14 0
+Meadow Chest 8 Item 1|grave13 0
+Meadow Chest 8 Item 2|grave13 0
+Meadow Chest 8 Item 3|grave13 0
+Meadow Chest 8 Item 4|grave13 0
+Meadow Chest 7 Item 1|grave07 0
+Meadow Wall 4|grave07 0wall
+Meadow Wall 5|grave07 1wall
+Meadow Wall 6|grave07 2wall
+Meadow Wall 7|grave09 0wall
+Meadow Wall 8|grave09 1wall
+Meadow Wall 9|grave09 2wall
+Meadow Wall 10|grave11 0wall
+Meadow Wall 11|grave11 1wall
+Meadow Wall 12|grave15 0wall
+Meadow Wall 13|grave15 1wall
+Meadow Wall 14|grave15 2wall
+Meadow Wall 15|grave15 3wall
+Meadow Wall 16|grave15 4wall
+Meadow Wall 17|grave20 0wall
+Meadow Wall 18|grave20 1wall
+Meadow Wall 19|grave20 2wall
+Meadow Wall 20|grave20 3wall
+Meadow Wall 21|grave20 4wall
+Meadow Wall 22|grave20 5wall
+Meadow Wall 23|grave24 0wall
+Meadow Wall 24|grave24 1wall
+Meadow Wall 25|grave24 2wall
+Meadow Wall 26|grave24 3wall
+Meadow Chest 6 Item 1|grave05 0
+Meadow Chest 5 Item 1|grave09 0
+Meadow Chest 4 Item 1|grave08 0
+Meadow Chest 3 Item 1|grave04 0
+Meadow Wall 3|grave04 0wall
+Meadow Chest 2 Item 1|grave03 0
+Meadow Chest 2 Item 2|grave03 0
+Meadow Chest 2 Item 3|grave03 0
+Meadow Chest 2 Item 4|grave03 0
+Meadow Chest 1 Item 1|grave01b 0
+Meadow Chest 1 Item 2|grave01b 0
+Meadow Chest 1 Item 3|grave01b 0
+Meadow Wall 1|grave01b 0wall
+Meadow Wall 2|grave03 0wall
+Mansion A Item|mansiona02 0equip
+Mansion A Key 1|mansiona01 0key
+Mansion A Wall 1|mansiona01 0wall
+Mansion A Wall 2|mansiona01 1wall
+Mansion A Wall 3|mansiona01 2wall
+Mansion A Wall 4|mansiona01 3wall
+Mansion A Wall 5|mansiona01 4wall
+Mansion A Wall 6|mansiona01 5wall
+Mansion A Wall 7|mansiona01 6wall
+Mansion B Chest 1 Item 1|mansionb01 0
+Mansion B Key 1|mansionb01 0key
+Mansion B Wall 1|mansionb01 0wall
+Mansion B Wall 2|mansionb01 1wall
+Mansion B Wall 3|mansionb01 2wall
+Mansion B Wall 4|mansionb01 3wall
+Mansion B Wall 5|mansionb01 4wall
+Mansion B Wall 6|mansionb01 5wall
+Mansion B Wall 7|mansionb02 0wall
+Mansion B Wall 8|mansionb02 1wall
+Mansion B Key 2|mansionb03 0key
+Mansion B Item|mansionb03 0equip
+Mansion C Key 1|mansionc01 0key
+Mansion C Key 2|mansionc01 1key
+Mansion C Key 3|mansionc01 2key
+Mansion C Key 4|mansionc03 0key
+Mansion C Wall 1|mansionc01 0wall
+Mansion C Wall 2|mansionc01 1wall
+Mansion C Wall 3|mansionc01 2wall
+Mansion C Wall 4|mansionc01 3wall
+Mansion C Wall 5|mansionc01 4wall
+Mansion C Wall 6|mansionc02 0wall
+Mansion C Wall 7|mansionc02 1wall
+Mansion C Wall 8|mansionc02 2wall
+Mansion C Wall 9|mansionc02 3wall
+Mansion C Chest 1 Item 1|mansionc02 0
+Mansion C Item|mansionc04 0equip
+Mansion D Key 1|mansiond01 0key
+Mansion D Chest 1 Item 1|mansiond02 0
+Mansion D Chest 2 Item 1|mansiond02 1
+Mansion D Wall 1|mansiond01 0wall
+Mansion D Wall 2|mansiond01 1wall
+Mansion D Wall 3|mansiond02 0wall
+Mansion D Wall 4|mansiond02 1wall
+Mansion D Wall 5|mansiond02 2wall
+Mansion D Wall 6|mansiond02 3wall
+Mansion D Wall 7|mansiond02 4wall
+Mansion D Wall 8|mansiond02 5wall
+Mansion D Wall 9|mansiond02 6wall
+Mansion D Item|mansiond02 0equip
+Mountain Cooler|snow10 0equip
+Mountain Key 1|snow03 0key
+Mountain Key 2|snow03 1key
+Mountain Key 3|snow05 0key
+Mountain Key 4|snow06 0key
+Mountain Key 5|snow06 1key
+Mountain Key 6|snow07 0key
+Mountain Key 7|snow07 1key
+Mountain Key 8|snow11 0key
+Mountain Key 9|snow12 0key
+Mountain Key 10|snow14 0key
+Mountain Key 11|snow15 0key
+Mountain Key 12|snow17 0key
+Mountain Key 13|snow18 0key
+Mountain Key 14|snow21 0key
+Mountain Key 15|snow22 0key
+Mountain Key 16|snow22 1key
+Mountain Wall 1|snow08 0wall
+Mountain Wall 2|snow11 0wall
+Mountain Wall 3|snow13 0wall
+Mountain Wall 4|snow14 0wall
+Mountain Wall 5|snow23 0wall
+Mountain Wall 6|snow23 1wall
+Mountain Chest 1 Item 1|snow02 0
+Mountain Chest 1 Item 2|snow02 0
+Mountain Chest 1 Item 3|snow02 0
+Mountain Chest 1 Item 4|snow02 0
+Mountain Chest 2 Item 1|snow04 1
+Mountain Chest 3 Item 1|snow05 0
+Mountain Chest 4 Item 1|snow07 0
+Mountain Chest 5 Item 1|snow11 0
+Mountain Chest 5 Item 2|snow11 0
+Mountain Chest 5 Item 3|snow11 0
+Mountain Chest 6 Item 1|snow14 0
+Mountain Chest 7 Item 1|snow20 0
+Mountain Chest 7 Item 2|snow20 0
+Mountain Chest 8 Item 1|snow21 0
+Mountain Chest 8 Item 2|snow21 0
+Mountain Chest 9 Item 1|snow22 0
+Mountain Chest 10 Item 1|snow23 0
+Mountain Chest 10 Item 2|snow23 0
+Mountain Chest 10 Item 3|snow23 0
+Mountain Chest 10 Item 4|snow23 0
+Mountain Chest 11 Item 1|snow23 1
+Mountain Chest 12 Item 1|snow25 0
+Snow-filled Cooler|Equip lava08 342 1
+Lava Chest 1 Item 1|lava02 0
+Lava Chest 2 Item 1|lava07 0
+Lava Chest 2 Item 2|lava07 0
+Lava Chest 2 Item 3|lava07 0
+Lava Chest 3 Item 1|lava08b 0
+Lava Chest 4 Item 1|lava08b 1
+Lava Chest 4 Item 2|lava08b 1
+Lava Chest 5 Item 1|lava09 0
+Lava Chest 5 Item 2|lava09 0
+Lava Chest 5 Item 3|lava09 0
+Lava Chest 5 Item 4|lava09 0
+Lava Chest 5 Item 5|lava09 0
+Lava Chest 5 Item 6|lava09 0
+Lava Chest 5 Item 7|lava09 0
+Lava Chest 5 Item 8|lava09 0
+Lava Chest 5 Item 9|lava09 0
+Lava Chest 5 Item 10|lava09 0
+Lava Chest 5 Item 11|lava09 0
+Lava Chest 5 Item 12|lava09 0
+Lava Chest 6 Item 1|lava09 1
+Lava Chest 7 Item 1|lava11b 0
+Lava Chest 8 Item 1|lava12 0
+Lava Chest 9 Item 1|lava13 0
+Lava Chest 9 Item 2|lava13 0
+Lava Chest 9 Item 3|lava13 0
+Lava Chest 9 Item 4|lava13 0
+Lava Chest 10 Item 1|lava15 0
+Lava Chest 10 Item 2|lava15 0
+Lava Chest 11 Item 1|lava16 0
+Lava Chest 12 Item 1|lava18b 0
+Lava Key 1|lava03 0key
+Lava Key 2|lava03 1key
+Lava Key 3|lava09 0key
+Lava Key 4|lava09 1key
+Lava Key 5|lava09b 0key
+Lava Key 6|lava09b 1key
+Lava Key 7|lava09b 1key
+Lava Key 8|lava09b 2key
+Lava Key 9|lava09b 3key
+Lava Key 10|lava13 0key
+Lava Key 11|lava15 0key
+Lava Key 12|lava15 1key
+Lava Key 13|lava15 2key
+Lava Key 14|lava17 0key
+Lava Key 15|lava17 1key
+Lava Key 16|lava18 0key
+Lava Wall 1|lava08 0wall
+Lava Wall 2|lava12 0wall
+Lava Wall 3|lava15 0wall
+Lava Wall 4|lava15 1wall
+Lava Wall 5|lava16 0wall
+Lava Wall 6|lava17 0wall
+Lava Wall 7|lava17 1wall
+Shop Filthy Pendant 1|Shop Filthy Pendant 0
+Shop Filthy Pendant 2|Shop Filthy Pendant 1
+Shop Filthy Pendant 3|Shop Filthy Pendant 2
+Shop Filthy Pendant 4|Shop Filthy Pendant 3
+Shop Egg Shell 1|Shop Egg Shell 0
+Shop Egg Shell 2|Shop Egg Shell 1
+Shop Egg Shell 3|Shop Egg Shell 2
+Shop Egg Shell 4|Shop Egg Shell 3
+Shop Sand Paper 1|Shop Sand Paper 0
+Shop Sand Paper 2|Shop Sand Paper 1
+Shop Sand Paper 3|Shop Sand Paper 2
+Shop Sand Paper 4|Shop Sand Paper 3
+Shop Dull Whetstone 1|Shop Dull Whetstone 0
+Shop Dull Whetstone 2|Shop Dull Whetstone 1
+Shop Dull Whetstone 3|Shop Dull Whetstone 2
+Shop Dull Whetstone 4|Shop Dull Whetstone 3
+Shop Leaf Vest 1|Shop Leaf Vest 0
+Shop Leaf Vest 2|Shop Leaf Vest 1
+Shop Leaf Vest 3|Shop Leaf Vest 2
+Shop Leaf Vest 4|Shop Leaf Vest 3
+Shop Bark Shirt 1|Shop Bark Shirt 0
+Shop Bark Shirt 2|Shop Bark Shirt 1
+Shop Bark Shirt 3|Shop Bark Shirt 2
+Shop Bark Shirt 4|Shop Bark Shirt 3
+Shop Cotton Vest 1|Shop Cotton Vest 0
+Shop Cotton Vest 2|Shop Cotton Vest 1
+Shop Cotton Vest 3|Shop Cotton Vest 2
+Shop Cotton Vest 4|Shop Cotton Vest 3
+Shop Dull Ring 1|Shop Dull Ring 0
+Shop Dull Ring 2|Shop Dull Ring 1
+Shop Dull Ring 3|Shop Dull Ring 2
+Shop Dull Ring 4|Shop Dull Ring 3
+Shop Treasure Key 1|Shop Treasure Key 0
+Shop Treasure Key 2|Shop Treasure Key 1
+Shop Treasure Key 3|Shop Treasure Key 2
+Shop Treasure Key 4|Shop Treasure Key 3
+Shop Treasure Key 5|Shop Treasure Key 4
+Shop Treasure Key 6|Shop Treasure Key 5
+Level 1|Level1
+Level 2|Level2
+Level 3|Level3
+Level 4|Level4
+Level 5|Level5
+Level 6|Level6
+Level 7|Level7
+Level 8|Level8
+Level 9|Level9
+Level 10|Level10
+Level 11|Level11
+Level 12|Level12
+Level 13|Level13
+Level 14|Level14
+Level 15|Level15
+Level 16|Level16
+Level 17|Level17
+Level 18|Level18
+Level 19|Level19
+Level 20|Level20
+Level 21|Level21
+Level 22|Level22
+Level 23|Level23
+Level 24|Level24
+Level 25|Level25
+Level 26|Level26
+Level 27|Level27
+Level 28|Level28
+Level 29|Level29
+Level 30|Level30
+Level 31|Level31
+Level 32|Level32
+Level 33|Level33
+Level 34|Level34
+Level 35|Level35
+Level 36|Level36
+Level 37|Level37
+Level 38|Level38
+Level 39|Level39
+Level 40|Level40
+Level 41|Level41
+Level 42|Level42
+Level 43|Level43
+Level 44|Level44
+Level 45|Level45
+Level 46|Level46
+Level 47|Level47
+Level 48|Level48
+Level 49|Level49
+Level 50|Level50
+Level 51|Level51
+Level 52|Level52
+Level 53|Level53
+Level 54|Level54
+Level 55|Level55
+Level 56|Level56
+Level 57|Level57
+Level 58|Level58
+Level 59|Level59
+Level 60|Level60

@@ -135,6 +135,11 @@ namespace Dust.Storage
 			{
 				writer.Write(Game1.stats.shopEquipGotten[n]);
 			}
+			writer.Write(Game1.stats.receivedLocation.Count);
+            foreach (var item in Game1.stats.receivedLocation)
+			{
+				writer.Write(item);
+			}
 		}
 
 		public bool Read(BinaryReader reader)
@@ -263,6 +268,11 @@ namespace Dust.Storage
 			for (int n = 0; n < Game1.stats.shopEquipGotten.Length; n++)
 			{
 				Game1.stats.shopEquipGotten[n] = reader.ReadByte();
+			}
+			int temp_count = reader.ReadInt32();
+			for (int n = 0; n < temp_count; n++)
+			{
+				Game1.stats.receivedLocation.Add(reader.ReadString());
 			}
 			Game1.pManager.Reset(removeWeather: true, removeBombs: true);
 			Game1.map.SwitchMap(Game1.pManager, Game1.character, Game1.map.path, loading: true);

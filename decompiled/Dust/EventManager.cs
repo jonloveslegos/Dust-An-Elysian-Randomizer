@@ -4935,6 +4935,10 @@ namespace Dust
 					if (this.eventTimer < 0f)
 					{
 						Game1.awardsManager.EarnAchievement(Achievement.DefeatGaius, forceCheck: false);
+							if (Game1.settings.RandoMode)
+							{
+								Game1.connected_server.SetGoalAchieved();
+							}
 						this.eventTimer = 0.2f;
 						this.FadeOut(this.eventTimer, Color.White);
 						this.subEvent++;

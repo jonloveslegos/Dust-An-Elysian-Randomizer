@@ -166,6 +166,8 @@ namespace Dust
 
 		public byte[] shopEquipGotten;
 
+		public List<string> receivedLocation = new List<string>();
+
 		public int[] Material = new int[100];
 
 		public int[] shopMaterial;
@@ -351,6 +353,7 @@ namespace Dust
 			{
 				Game1.cManager.challengeArenas[n].HighScore = 0;
 			}
+			this.receivedLocation = new List<string>();
 			this.ResetItems();
 			Game1.inventoryManager.ResetInventoryManager();
 			Game1.hud.ExitShop();
@@ -832,115 +835,194 @@ namespace Dust
 			}
 		}
 
+		public void EarnAPItem(int itemid, ParticleManager pMan)
+		{
+			var upgradegot = false;
+			if (itemid >= 400)
+			{
+				if (!upgradegot)
+					pMan.AddCaption(new Vector2(Game1.screenWidth / 2, Game1.screenHeight / 3 - 30), Strings_Hud.Status_Upgraded, 1.2f, new Color(0.5f, 1f, 1f, 1f), 3f, 9);
+				upgradegot = true;
+				this.EarnUpgrade(itemid - 400, (byte)(Game1.stats.upgrade[itemid - 400] + 1));
+			}
+			else if (itemid == 500)
+			{
+				if (Game1.settings.AutoLevelUp || this.gameDifficulty == 0)
+				{
+					this.UpgradeStats(this.BalanceUpgrades(1));
+					if (!Game1.IsTrial)
+					{
+						Game1.awardsManager.EarnAchievement(Achievement.LevelUp, forceCheck: false);
+					}
+				}
+				else
+				{
+					this.skillPoints++;
+				}
+				Game1.hud.levelUpEffect = true;
+			}
+			else if (itemid >= 10000)
+				this.AcquireEquip((EquipType)(itemid-10000), 1, _bluePrint: true);
+			else
+				this.AcquireEquip((EquipType)itemid, 1, _bluePrint: false);
+		}
+
 		public void GetChestFromFile(string chestID, ParticleManager pMan)
 		{
-			var itemid = ReturnChestItems(chestID);
-			var upgradegot = false;
-			if (Game1.debugging)
-            {
-				Debug.WriteLine(chestID);
-                pMan.AddCaption(new Vector2(Game1.screenWidth / 2, Game1.screenHeight / 3 - 60), chestID, 1.2f, new Color(0.5f, 1f, 1f, 1f), 3f, 9);
-			}
-			foreach (var gotten in itemid)
+			if (Game1.settings.RandoMode)
 			{
-				if (gotten.Contains("~"))
+				var itemid = ReturnApLocation(chestID);
+				var locaId = new List<long>();
+                foreach (var currentid in itemid)
 				{
-					if (!upgradegot)
-						pMan.AddCaption(new Vector2(Game1.screenWidth / 2, Game1.screenHeight / 3 - 30), Strings_Hud.Status_Upgraded, 1.2f, new Color(0.5f, 1f, 1f, 1f), 3f, 9);
-					upgradegot = true;
-					this.EarnUpgrade(int.Parse(gotten.Replace("~", "")), (byte)(Game1.stats.upgrade[int.Parse(gotten.Replace("~", ""))] + 1));
+					locaId.Add(Game1.connected_server.Locations.GetLocationIdFromName("DustAET", currentid));
 				}
-				else if (gotten == "!")
-                {
-					if (Game1.settings.AutoLevelUp || this.gameDifficulty == 0)
+				Game1.connected_server.Locations.CompleteLocationChecks(locaId.ToArray());
+			}
+			else
+			{
+				var itemid = ReturnChestItems(chestID);
+				var upgradegot = false;
+				if (Game1.debugging)
+				{
+					Debug.WriteLine(chestID);
+					pMan.AddCaption(new Vector2(Game1.screenWidth / 2, Game1.screenHeight / 3 - 60), chestID, 1.2f, new Color(0.5f, 1f, 1f, 1f), 3f, 9);
+				}
+				foreach (var gotten in itemid)
+				{
+					if (gotten.Contains("~"))
 					{
-						this.UpgradeStats(this.BalanceUpgrades(1));
-						if (!Game1.IsTrial)
+						if (!upgradegot)
+							pMan.AddCaption(new Vector2(Game1.screenWidth / 2, Game1.screenHeight / 3 - 30), Strings_Hud.Status_Upgraded, 1.2f, new Color(0.5f, 1f, 1f, 1f), 3f, 9);
+						upgradegot = true;
+						this.EarnUpgrade(int.Parse(gotten.Replace("~", "")), (byte)(Game1.stats.upgrade[int.Parse(gotten.Replace("~", ""))] + 1));
+					}
+					else if (gotten == "!")
+					{
+						if (Game1.settings.AutoLevelUp || this.gameDifficulty == 0)
 						{
-							Game1.awardsManager.EarnAchievement(Achievement.LevelUp, forceCheck: false);
+							this.UpgradeStats(this.BalanceUpgrades(1));
+							if (!Game1.IsTrial)
+							{
+								Game1.awardsManager.EarnAchievement(Achievement.LevelUp, forceCheck: false);
+							}
 						}
+						else
+						{
+							this.skillPoints++;
+						}
+						Game1.hud.levelUpEffect = true;
 					}
+					else if (int.Parse(gotten) < 0)
+						this.AcquireEquip((EquipType)(-int.Parse(gotten)), 1, _bluePrint: true);
 					else
-					{
-						this.skillPoints++;
-					}
-					Game1.hud.levelUpEffect = true;
+						this.AcquireEquip((EquipType)int.Parse(gotten), 1, _bluePrint: false);
 				}
-				else if (int.Parse(gotten) < 0)
-					this.AcquireEquip((EquipType)(-int.Parse(gotten)), 1, _bluePrint: true);
-				else
-					this.AcquireEquip((EquipType)int.Parse(gotten), 1, _bluePrint: false);
 			}
 		}
 
 		public void GetChestFromFileNoText(string chestID)
 		{
-			var itemid = ReturnChestItems(chestID);
-			if (Game1.debugging)
+			if (Game1.settings.RandoMode)
 			{
-				Debug.WriteLine(chestID);
-			}
-			foreach (var gotten in itemid)
-			{
-				if (gotten.Contains("~"))
-					this.EarnUpgrade(int.Parse(gotten.Replace("~", "")), (byte)(Game1.stats.upgrade[int.Parse(gotten.Replace("~", ""))] + 1));
-				else if (gotten == "!")
+				var itemid = ReturnApLocation(chestID);
+				var locaId = new List<long>();
+				foreach (var currentid in itemid)
 				{
-					if (Game1.settings.AutoLevelUp || this.gameDifficulty == 0)
+					locaId.Add(Game1.connected_server.Locations.GetLocationIdFromName("DustAET", currentid));
+				}
+				Game1.connected_server.Locations.CompleteLocationChecks(locaId.ToArray());
+			}
+			else
+			{
+				var itemid = ReturnChestItems(chestID);
+				if (Game1.debugging)
+				{
+					Debug.WriteLine(chestID);
+				}
+				foreach (var gotten in itemid)
+				{
+					if (gotten.Contains("~"))
+						this.EarnUpgrade(int.Parse(gotten.Replace("~", "")), (byte)(Game1.stats.upgrade[int.Parse(gotten.Replace("~", ""))] + 1));
+					else if (gotten == "!")
 					{
-						this.UpgradeStats(this.BalanceUpgrades(1));
-						if (!Game1.IsTrial)
+						if (Game1.settings.AutoLevelUp || this.gameDifficulty == 0)
 						{
-							Game1.awardsManager.EarnAchievement(Achievement.LevelUp, forceCheck: false);
+							this.UpgradeStats(this.BalanceUpgrades(1));
+							if (!Game1.IsTrial)
+							{
+								Game1.awardsManager.EarnAchievement(Achievement.LevelUp, forceCheck: false);
+							}
+						}
+						else
+						{
+							this.skillPoints++;
 						}
 					}
+					else if (int.Parse(gotten) < 0)
+						this.AcquireEquip((EquipType)(-int.Parse(gotten)), 1, _bluePrint: true);
 					else
-					{
-						this.skillPoints++;
-					}
+						this.AcquireEquip((EquipType)int.Parse(gotten), 1, _bluePrint: false);
+				} }
+		}
+
+		public List<string> ReturnApLocation(string chestID)
+		{
+			List<string> toreturn = new List<string>();
+			foreach (string line in System.IO.File.ReadLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\ap.data"))
+			{
+				if (line.Split('|')[1].Contains(chestID))
+				{
+					toreturn.Add(line.Split('|')[0]);
 				}
-				else if (int.Parse(gotten) < 0)
-					this.AcquireEquip((EquipType)(-int.Parse(gotten)), 1, _bluePrint: true);
-				else
-					this.AcquireEquip((EquipType)int.Parse(gotten), 1, _bluePrint: false);
 			}
+			return toreturn;
 		}
 
 		public List<string> ReturnChestItems(string chestID)
 		{
-			foreach (string line in System.IO.File.ReadLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\seed.data"))
+			if (Game1.settings.RandoMode)
 			{
-				var itemid = new List<string>();
-				var found = "";
-				var failed = false;
-				if (!failed)
+				var locaId = new List<string>();
+				locaId.Add("AP Item");
+				return locaId;
+			}
+			else
+			{
+				foreach (string line in System.IO.File.ReadLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\seed.data"))
 				{
-					foreach (char chara in line)
-					{
-						if (chara.ToString() == ":")
-						{
-							if (found != chestID)
-							{
-								failed = true;
-								break;
-							}
-							found = "";
-						}
-						else if (chara.ToString() == ",")
-						{
-							itemid.Add(found);
-							found = "";
-						}
-						else
-							found += chara;
-					}
+					var itemid = new List<string>();
+					var found = "";
+					var failed = false;
 					if (!failed)
 					{
-						return itemid;
+						foreach (char chara in line)
+						{
+							if (chara.ToString() == ":")
+							{
+								if (found != chestID)
+								{
+									failed = true;
+									break;
+								}
+								found = "";
+							}
+							else if (chara.ToString() == ",")
+							{
+								itemid.Add(found);
+								found = "";
+							}
+							else
+								found += chara;
+						}
+						if (!failed)
+						{
+							return itemid;
+						}
 					}
 				}
+				return new List<string>();
 			}
-			return new List<string>();
 		}
 		public void OpenChest(Vector2 loc, ParticleManager pMan, string chestID)
 		{
