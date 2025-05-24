@@ -838,13 +838,8 @@ namespace Dust
 		public void EarnAPItem(int itemid, ParticleManager pMan)
 		{
 			var upgradegot = false;
-			if (itemid >= 400)
-			{
-				if (!upgradegot)
-					pMan.AddCaption(new Vector2(Game1.screenWidth / 2, Game1.screenHeight / 3 - 30), Strings_Hud.Status_Upgraded, 1.2f, new Color(0.5f, 1f, 1f, 1f), 3f, 9);
-				upgradegot = true;
-				this.EarnUpgrade(itemid - 400, (byte)(Game1.stats.upgrade[itemid - 400] + 1));
-			}
+            if (itemid == 700)
+				this.AcquireEquip(EquipType.FeebleFruit, 1, _bluePrint: false);
 			else if (itemid == 500)
 			{
 				if (Game1.settings.AutoLevelUp || this.gameDifficulty == 0)
@@ -863,6 +858,13 @@ namespace Dust
 			}
 			else if (itemid >= 10000)
 				this.AcquireEquip((EquipType)(itemid-10000), 1, _bluePrint: true);
+			else if (itemid >= 400)
+			{
+				if (!upgradegot)
+					pMan.AddCaption(new Vector2(Game1.screenWidth / 2, Game1.screenHeight / 3 - 30), Strings_Hud.Status_Upgraded, 1.2f, new Color(0.5f, 1f, 1f, 1f), 3f, 9);
+				upgradegot = true;
+				this.EarnUpgrade(itemid - 400, (byte)(Game1.stats.upgrade[itemid - 400] + 1));
+			}
 			else
 				this.AcquireEquip((EquipType)itemid, 1, _bluePrint: false);
 		}
