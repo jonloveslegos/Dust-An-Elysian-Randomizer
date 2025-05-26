@@ -1316,6 +1316,9 @@ public class Shop
 							else if (trueId.Contains("-"))
 							{
 							}
+							else if (trueId == "AP Item")
+                            {
+                            }
 							else
 							{
 								double step1 = ((int.Parse(trueId) + 1) / 60.0);
@@ -1510,6 +1513,12 @@ public class Shop
 							else if (trueId == "!")
 							{
 								trueItemName = "Skill Gem";
+								Shop.itemInfoDisplay = "";
+								Shop.itemStats = "";
+							}
+							else if (trueId == "AP Item")
+							{
+								trueItemName = trueId;
 								Shop.itemInfoDisplay = "";
 								Shop.itemStats = "";
 							}

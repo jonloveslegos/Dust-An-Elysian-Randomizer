@@ -973,7 +973,7 @@ namespace Dust
 			List<string> toreturn = new List<string>();
 			foreach (string line in System.IO.File.ReadLines(System.IO.Directory.GetCurrentDirectory() + "\\data\\ap.data"))
 			{
-				if (line.Split('|')[1].Contains(chestID))
+				if (line.Split('|')[1] == chestID)
 				{
 					toreturn.Add(line.Split('|')[0]);
 				}
