@@ -1578,7 +1578,7 @@ namespace Dust
 		{
 			if (this.comboTimer > 0f)
 			{
-				this.chainXPTally = (int)(((float)this.comboMeter + this.comboEnemies * (float)this.LEVEL) / 4f) * Game1.settings.ExpMult;
+				this.chainXPTally = (int)(((float)this.comboMeter + this.comboEnemies * (float)this.LEVEL) / 4f);
 				if (!Game1.character[0].Holding && !Game1.hud.isPaused && Game1.hud.inventoryState == InventoryState.None)
 				{
 					this.comboTimer -= frameTime;

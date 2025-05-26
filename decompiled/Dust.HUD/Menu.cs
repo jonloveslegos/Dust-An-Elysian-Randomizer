@@ -3537,10 +3537,10 @@ namespace Dust.HUD
 
 		private void DrawSettingsPC()
 		{
-			int num = 16;
+			int num = 17;
 			if (Game1.gameMode == Game1.GameModes.MainMenu && !Game1.settings.RandoMode)
             {
-				num += 5;
+				num += 4;
             }
             else if (Game1.gameMode == Game1.GameModes.MainMenu)
 			{
@@ -3978,45 +3978,34 @@ namespace Dust.HUD
 						this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.AutoFireTitle, Strings_Options.PCEnabledLocked, Strings_Options.AutoFire1, textSize);
 					}
 					break;
-				case 18:
-					if (Game1.settings.RandoMode)
+				case 19:
+					Game1.smallText.DrawText(pos, Strings_Options.RandomizeStartingAbilitiesTitle, textSize);
+					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandomizeStartingAbilitiesTitle, Game1.settings.RandomizeStartingAbilities ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.RandomizeStartingAbilities, textSize) != 0)
 					{
-						Game1.smallText.DrawText(pos, "Setup Archipelago", textSize);
-						if (this.DrawToggleCursors(pos, toggleOffset, id, "Setup Archipelago", "Connect", "Connects to the specified Archipelago server and slot from the archipelago_data text file in the data folder.", textSize) != 0)
-						{
-							
-						}
-					}
-					else
-					{
-						Game1.smallText.DrawText(pos, Strings_Options.RandomizeStartingAbilitiesTitle, textSize);
-						if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandomizeStartingAbilitiesTitle, Game1.settings.RandomizeStartingAbilities ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.RandomizeStartingAbilities, textSize) != 0)
-						{
-							Game1.settings.RandomizeStartingAbilities = !Game1.settings.RandomizeStartingAbilities;
-						}
+						Game1.settings.RandomizeStartingAbilities = !Game1.settings.RandomizeStartingAbilities;
 					}
 					break;
-				case 19:
+				case 20:
 					Game1.smallText.DrawText(pos, Strings_Options.RandomizeSkillGemsTitle, textSize);
 					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandomizeSkillGemsTitle, Game1.settings.RandomizeSkillGems ? Strings_Options.PCEnabled : Strings_Options.PCDisabled, Strings_Options.RandomizeSkillGems, textSize) != 0)
 					{
 						Game1.settings.RandomizeSkillGems = !Game1.settings.RandomizeSkillGems;
 					}
 					break;
-				case 20:
+				case 17:
 					Game1.smallText.DrawText(pos, Strings_Options.ExpMultTitle, textSize);
 					int num303 = this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.ExpMultTitle, Game1.settings.ExpMult.ToString(), Strings_Options.ExpMult, textSize);
 					Game1.settings.ExpMult += num303;
 					if (Game1.settings.ExpMult < 1)
 					{
-						Game1.settings.ExpMult = 1;
+						Game1.settings.ExpMult = 10;
 					}
 					else if (Game1.settings.ExpMult > 10)
 					{
-						Game1.settings.ExpMult = 10;
+						Game1.settings.ExpMult = 1;
 					}
 					break;
-				case 17:
+				case 18:
 					Game1.smallText.DrawText(pos, Strings_Options.RandoModeTitle, textSize);
 					if (this.DrawToggleCursors(pos, toggleOffset, id, Strings_Options.RandoModeTitle, Game1.settings.RandoMode ? Strings_Options.RandoModeArchipelago : Strings_Options.RandoModeStandalone, Strings_Options.RandoMode, textSize) != 0)
 					{
